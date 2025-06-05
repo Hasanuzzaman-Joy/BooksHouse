@@ -1,0 +1,36 @@
+[
+  {
+    "id": 1,
+    "name": "Selina Stefen",
+    "date": "3 days ago",
+    "rating": 4.9,
+    "avatar": "https://i.ibb.co.com/vKBWJW7/tes-2.png",
+    "feedback": [
+      "BooksHouse made managing my reading list effortless. I can finally track what I’ve read and what’s next!",
+      "The reading progress tracker on BooksHouse is a game-changer. It keeps me motivated to finish books on time!"
+    ]
+  },
+  {
+    "id": 2,
+    "name": "Shariful Islam",
+    "date": "1 week ago",
+    "rating": 5,
+    "avatar": "https://i.ibb.co/k2Mgmxt4/Screenshot-12.png",
+    "feedback": [
+      "Perfect for book lovers! I love how easy it is to categorize books and add personal reviews on BooksHouse.",
+      "The interface of BooksHouse is clean and responsive. I even share my shelf with friends to recommend reads."
+    ]
+  },
+  {
+    "id": 3,
+    "name": "Adelina Terescova",
+    "date": "5 days ago",
+    "rating": 4.7,
+    "avatar": "https://i.ibb.co/tMS2M3jr/Screenshot-7.png",
+    "feedback": [
+      "Finally, an online bookshelf that makes sense! I’ve logged over 30 books already with BooksHouse.",
+      "The custom categories and reading goals on BooksHouse keep me organized and inspired. Highly recommended!"
+    ]
+  }
+]
+
