@@ -1,13 +1,17 @@
 import { FcGoogle } from "react-icons/fc";
-import { FaEyeSlash } from 'react-icons/fa';
 import { Link, useNavigate } from "react-router";
 import useAuth from '../../Hooks/useAuth';
 import { Bounce, toast, ToastContainer } from "react-toastify";
+import { useEffect } from "react";
 
 const Register = () => {
 
+    useEffect(() => {
+        document.title = "BooksHouse | Register";
+    }, [])
+
     const navigate = useNavigate();
-    const { register, updatedProfile, googleSign } = useAuth();
+    const { register, updatedProfile, googleSign, setErr, err } = useAuth();
 
     const handleGoogle = () => {
         googleSign
@@ -52,22 +56,22 @@ const Register = () => {
         const photo = form.photo.value;
         const password = form.password.value;
 
-        // setErr('');
+        setErr('');
 
-        // if (!/[A-Z]/.test(password)) {
-        //     setErr("Password must have at least one uppercase letter.");
-        //     return
-        // }
+        if (!/[A-Z]/.test(password)) {
+            setErr("Password must have at least one uppercase letter.");
+            return
+        }
 
-        // if (!/[a-z]/.test(password)) {
-        //     setErr("Password must have at least one lowercase letter.");
-        //     return
-        // }
+        if (!/[a-z]/.test(password)) {
+            setErr("Password must have at least one lowercase letter.");
+            return
+        }
 
-        // if (password.length < 6) {
-        //     setErr("Password must be at least 6 characters long.");
-        //     return
-        // }
+        if (password.length < 6) {
+            setErr("Password must be at least 6 characters long.");
+            return
+        }
 
         register(email, password)
             .then(() => {
@@ -87,7 +91,19 @@ const Register = () => {
                     navigate('/');
                 }, 2000);
             })
-        // .catch(error => setErr(error.message))
+            .catch(error => {
+                toast.error(`${error.message}`, {
+                    position: "top-right",
+                    autoClose: 3000,
+                    hideProgressBar: false,
+                    closeOnClick: false,
+                    pauseOnHover: true,
+                    draggable: true,
+                    progress: undefined,
+                    theme: "light",
+                    transition: Bounce
+                });
+            })
     }
 
     return (
@@ -111,7 +127,7 @@ const Register = () => {
                 </div>
                 <form className="space-y-8" onSubmit={hanedleRegisterForm}>
                     <div className="space-y-4">
-                        {/* {err && <p className='text-sm' style={{ color: 'red' }}>{err}</p>} */}
+                        {err && <p className='text-sm' style={{ color: 'red' }}>{err}</p>}
                         <div className="space-y-2">
                             <label htmlFor="name" className="block text-base font-semibold">Name</label>
                             <input type="text" name="name" id="name" placeholder="Your Name" className="w-full px-3 py-2 border rounded-md dark:border-gray-300  border-gray-300 bg-gray-50 text-gray-800 focus:border-gray-600" required />
@@ -138,10 +154,6 @@ const Register = () => {
                                     required
                                     className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-gray-600"
                                 />
-                                <span className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-600"
-                                >
-                                    <FaEyeSlash />
-                                </span>
                             </div>
                         </div>
                     </div>

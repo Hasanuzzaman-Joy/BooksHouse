@@ -43,7 +43,7 @@ const Navbar = () => {
                     </ul>
                 </div>
                 <div className='flex justify-center items-center -ml-4 md:ml-0'>
-                    <img src="/src/assets/logo.png" className='w-8' alt="logo" />
+                    <img src="/logo.png" className='w-8' alt="logo" />
                     <h1 className='text-[#242253] font-bold text-base md:text-2xl -ml-[2px]'>Books<span className='text-[#faf34a] '>House</span></h1>
                 </div>
             </div>

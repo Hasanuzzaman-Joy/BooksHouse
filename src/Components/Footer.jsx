@@ -7,14 +7,14 @@ const Footer = () => {
         <>
             <div className="footer sm:footer-horizontal bg-[#bfbdff] text-base-content p-10 w-full md:w-11/12 mx-auto">
                 <aside className="flex justify-center items-center">
-                    <img src="/src/assets/logo.png" alt="" className="w-14"/>
+                    <img src="/logo.png" alt="" className="w-14"/>
                     <h1 className='text-[#242253] font-bold text-base md:text-2xl -ml-[2px]'>Books<span className='text-[#faf34a] '>House</span></h1>
                 </aside>
                 <nav>
                     <h6 className="footer-title font-bold text-lg">Legal</h6>
-                    <Link className="link link-hover text-base">Terms & Conditions</Link>
-                    <Link className="link link-hover text-base">Privacy policy</Link>
-                    <Link className="link link-hover text-base">Cookie policy</Link>
+                    <Link className="link link-hover text-base font-medium">Terms & Conditions</Link>
+                    <Link className="link link-hover text-base font-medium">Privacy policy</Link>
+                    <Link className="link link-hover text-base font-medium">Cookie policy</Link>
                 </nav>
                 <nav>
                     <h6 className="footer-title font-bold text-lg">Contact Us</h6>

@@ -1,13 +1,20 @@
 import { FcGoogle } from "react-icons/fc";
 import { Link, useLocation, useNavigate } from "react-router";
 import useAuth from '../../Hooks/useAuth';
-import { Bounce, toast } from "react-toastify";
+import { Bounce, toast, ToastContainer } from "react-toastify";
+import { useEffect, useState } from "react";
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const Login = () => {
 
+    useEffect(() => {
+        document.title = "BooksHouse | Login";
+    }, [])
+
     const navigate = useNavigate();
     const location = useLocation();
-    const { login, googleSign } = useAuth();
+    const [showPassword, setShowPassword] = useState(false);
+    const { login, googleSign, setErr, err  } = useAuth();
 
     const handleGoogle = () => {
         googleSign()
@@ -49,7 +56,7 @@ const Login = () => {
         const email = form.email.value;
         const password = form.password.value;
 
-        // setErr('')
+        setErr('')
 
         login(email, password).then(() => {
             toast.success("You've successfully logged in to the website", {
@@ -84,6 +91,7 @@ const Login = () => {
 
     return (
         <div className=' bg-[#f4f3f3]  w-full md:w-11/12 mx-auto py-10 md:px-0 px-4'>
+            <ToastContainer />
             <div className="w-full max-w-md mx-auto bg-base-100 p-4 rounded-md sm:p-8 shadow-xl" style={{
                 boxShadow:
                     'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px',
@@ -102,7 +110,7 @@ const Login = () => {
                 </div>
                 <form className="space-y-8" onSubmit={hanedleLogin}>
                     <div className="space-y-4">
-                        {/* {err && <p className='text-sm' style={{ color: 'red' }}>{err}</p>} */}
+                        {err && <p className='text-sm' style={{ color: 'red' }}>{err}</p>}
                         <div className="space-y-2">
                             <label htmlFor="email" className="block text-base font-semibold">Email address</label>
                             <input type="email" required name="email" id="email" placeholder="abc@gmail.com" className="w-full px-3 py-2 border rounded-md border-gray-300 bg-gray-50 text-gray-800 focus:border-gray-600" />
@@ -114,21 +122,23 @@ const Login = () => {
 
                             <div className="relative">
                                 <input
-                                    type="password"
+                                    type={
+                                        showPassword ? "text" : "password"
+                                    }
                                     name="password"
                                     id="password"
                                     required
                                     placeholder="*****"
                                     className="w-full px-3 py-2 border rounded-md dark:border-gray-300  border-gray-300 bg-gray-50 text-gray-800 focus:border-gray-600"
                                 />
-                                {/* <span
+                                <span
                                     onClick={() => setShowPassword(!showPassword)}
-                                    className="absolute right-3 top-1/2 transform -translate-y-1/2 cursor-pointer text-gray-600"
+                                    className="absolute right-3 top-[22px] transform -translate-y-1/2 cursor-pointer text-gray-600"
                                 >
                                     {
                                         showPassword ? <FaEyeSlash /> : <FaEye />
                                     }
-                                </span> */}
+                                </span>
                                 <div><a className="link link-hover text-[14px] underline">Forgot password?</a></div>
                             </div>
                         </div>
