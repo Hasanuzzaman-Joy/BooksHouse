@@ -1,20 +1,2 @@
 @import "tailwindcss";
 @plugin "daisyui";
-
-@plugin "daisyui/theme" {
-  name: "light";
-  default: true; 
-  --color-base-100: #f4f4f4;
-  --color-base-200: #e7e7e7;
-  --color-base-300: #d7d7d7;
-  --color-base-300:#6a6a6a ;
-  --color-primary: #ff2e19;
-  --color-secondary: #ff9327;
-}
-
-*{
-    margin:0;
-    padding: 0;
-    box-sizing: border-box;
-    overflow: hidden;
-}
