@@ -6,13 +6,16 @@ import Swal from 'sweetalert2';
 
 const MyBooks = () => {
 
-    const { user } = useAuth();
+    const { user} = useAuth();
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
         axios(`${import.meta.env.VITE_SERVER_URL}/books?email=${user.email}`)
             .then(res => {
                 setBooks(res.data);
+            })
+            .catch(err => {
+                console.log(err)
             })
     }, [user.email])
 
@@ -83,7 +86,7 @@ const MyBooks = () => {
                                             <td>{book.name}</td>
                                             <td className="flex gap-2">
                                                 <Link to={`/update-book/${book._id}`} className='btn bg-[#bfbdff] hover:bg-[#242253] transition-all text-[#242253] hover:text-white md:px-8'>Update</Link>
-                                                <button className='btn bg-[#242253] hover:bg-[#bfbdff] transition-all text-white hover:text-[#242253] md:px-8' onClick={handleDelete(book._id)}>Delete</button>
+                                                <button className='btn bg-[#242253] hover:bg-[#bfbdff] transition-all text-white hover:text-[#242253] md:px-8' onClick={() => handleDelete(book._id)}>Delete</button>
                                             </td>
                                         </tr>
                                     ))
