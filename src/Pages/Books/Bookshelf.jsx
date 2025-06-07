@@ -1,9 +1,23 @@
-import { useLoaderData } from "react-router";
 import BookCard from "../../Components/BookCard";
+import { useEffect, useState } from "react";
+import useAxiosSecure from "../../Services/AxiosInstance/useAxiosSecure";
 
 const Bookshelf = () => {
 
-    const books = useLoaderData();
+    const [books, setBooks] = useState([]);
+    const axiosInstance = useAxiosSecure();
+
+    useEffect(() => {
+        axiosInstance(`${import.meta.env.VITE_SERVER_URL}/books`)
+            .then(res => {
+                setBooks(res.data);
+            })
+            .catch(err => {
+                console.log(err)
+            })
+    }, [axiosInstance])
+
+    console.log(books)
 
     return (
         <div className="w-full md:w-11/12 mx-auto py-7">

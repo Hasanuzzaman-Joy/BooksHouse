@@ -11,6 +11,7 @@ import MyBooks from '../Pages/Books/MyBooks'
 import AddBook from '../Pages/Books/AddBook'
 import UpdateBook from "../Pages/Books/UpdateBook"
 import Loading from "../Components/Loading"
+import BookDetails from "../Pages/Books/BookDetails"
 
 const router = createBrowserRouter([
     {
@@ -23,9 +24,7 @@ const router = createBrowserRouter([
             },
             {
                 path:'/bookshelf',
-                loader:() => fetch(`${import.meta.env.VITE_SERVER_URL}/books`),
-                Component:Bookshelf,
-                hydrateFallbackElement:<Loading />
+                Component:Bookshelf
             },
             {
                 path:'/my-books',
@@ -45,6 +44,12 @@ const router = createBrowserRouter([
                 element:<PrivateRoute>
                     <UpdateBook />
                 </PrivateRoute>,
+                hydrateFallbackElement:<Loading />
+            },
+            {
+                path:'/book-details/:id',
+                loader:({params}) => fetch(`${import.meta.env.VITE_SERVER_URL}/book/${params.id}`),
+                element:<BookDetails />,
                 hydrateFallbackElement:<Loading />
             },
             {

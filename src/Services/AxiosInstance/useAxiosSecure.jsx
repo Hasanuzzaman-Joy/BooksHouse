@@ -17,7 +17,7 @@ const useAxiosSecure = () => {
 
     axiosInstance.interceptors.response.use(
         (res => {
-            return res.data
+            return res
         }),
         (error => {
             return Promise.reject(error);

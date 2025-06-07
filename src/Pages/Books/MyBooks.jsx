@@ -1,23 +1,24 @@
 import { useEffect, useState } from 'react';
 import useAuth from '../../Hooks/useAuth';
-import axios from 'axios';
 import { Link } from 'react-router';
 import Swal from 'sweetalert2';
+import useAxiosSecure from '../../Services/AxiosInstance/useAxiosSecure';
 
 const MyBooks = () => {
 
-    const { user} = useAuth();
+    const {user} = useAuth();
+    const axiosInstance = useAxiosSecure();
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
-        axios(`${import.meta.env.VITE_SERVER_URL}/books?email=${user.email}`)
+        axiosInstance(`${import.meta.env.VITE_SERVER_URL}/books?email=${user.email}`)
             .then(res => {
                 setBooks(res.data);
             })
             .catch(err => {
                 console.log(err)
             })
-    }, [user.email])
+    }, [axiosInstance,user.email])
 
     const handleDelete = (id) => {
         Swal.fire({
