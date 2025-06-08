@@ -10,18 +10,6 @@ const AuthProvider = ({ children }) => {
     const [loading, setLoading] = useState(true);
     const [err, setErr] = useState('');
 
-    useEffect(() => {
-        const unsubscribe = onAuthStateChanged(auth, (userCredentials) => {
-            console.log(userCredentials)
-            if (userCredentials) {
-                setUser(userCredentials);
-                setLoading(false);
-            }
-        })
-
-        return () => unsubscribe();
-    }, [])
-
     const register = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
@@ -47,6 +35,16 @@ const AuthProvider = ({ children }) => {
     const logOut = () => {
         return signOut(auth);
     }
+
+    
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (userCredentials) => {
+                setUser(userCredentials);
+                setLoading(false);
+        })
+
+        return () => unsubscribe();
+    }, [])
 
     const userInfo = {
         register,

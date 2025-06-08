@@ -12,7 +12,7 @@ const MyBooks = () => {
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
-        axios(`${import.meta.env.VITE_SERVER_URL}/books?email=unijoy84@gmail.com`, {
+        axios(`${import.meta.env.VITE_SERVER_URL}/books?email=${user?.email}`, {
             headers: {
                 Authorization: `Bearer ${user?.accessToken}`
             }
@@ -110,7 +110,7 @@ const MyBooks = () => {
                 ) : (
                     <div className="bg-[#f4f3f3] text-center space-y-4 py-12 rounded-xl shadow-md">
                         <h2 className="text-2xl font-bold text-[#242253]">You have not added any Books in your library.</h2>
-                        <Link to="/addPlant" className="btn bg-[#bfbdff] hover:bg-[#242253] transition-all text-[#242253] text-base font-medium hover:text-white ">Add a Book</Link>
+                        <Link to="/add-book" className="btn bg-[#bfbdff] hover:bg-[#242253] transition-all text-[#242253] text-base font-medium hover:text-white ">Add a Book</Link>
                     </div>
                 )
             }
