@@ -2,23 +2,35 @@ import { useEffect, useState } from 'react';
 import useAuth from '../../Hooks/useAuth';
 import { Link } from 'react-router';
 import Swal from 'sweetalert2';
-import useAxiosSecure from '../../Services/AxiosInstance/useAxiosSecure';
+import axios from 'axios';
+import Loading from '../../Components/Loading';
 
 const MyBooks = () => {
 
-    const {user} = useAuth();
-    const axiosInstance = useAxiosSecure();
+    const { user, logOut } = useAuth();
+    const [loading, setLoading] = useState(true);
     const [books, setBooks] = useState([]);
 
     useEffect(() => {
-        axiosInstance(`${import.meta.env.VITE_SERVER_URL}/books?email=${user.email}`)
+        axios(`${import.meta.env.VITE_SERVER_URL}/books?email=unijoy84@gmail.com`, {
+            headers: {
+                Authorization: `Bearer ${user?.accessToken}`
+            }
+        })
             .then(res => {
                 setBooks(res.data);
+                setLoading(false);
             })
             .catch(err => {
-                console.log(err)
+                console.log(err);
+                if(err?.status === 401  || err?.status === 403){
+                    logOut()
+                    .then(() => {
+                        console.log('Signed Out')
+                    })
+                }
             })
-    }, [axiosInstance,user.email])
+    }, [user, logOut])
 
     const handleDelete = (id) => {
         Swal.fire({
@@ -57,7 +69,7 @@ const MyBooks = () => {
             <h1 className="text-4xl font-bold text-center text-[#242253] mb-6">My Reading Shelf</h1>
 
             {
-                books.length > 0 ? (
+                (loading) ? <Loading /> : books.length > 0 ? (
                     <div className="overflow-x-auto rounded-box border border-base-content/5 bg-[#f4f3f3]">
                         <table className="table">
                             <thead className="bg-[#242253] text-white">

@@ -6,42 +6,45 @@ import { useEffect, useState } from 'react';
 const AuthProvider = ({ children }) => {
 
     const provider = new GoogleAuthProvider();
-    const[user, setUser] = useState(null);
-    const[loading, setLoading] = useState(true);
-    const[err, setErr] = useState('');
+    const [user, setUser] = useState(null);
+    const [loading, setLoading] = useState(true);
+    const [err, setErr] = useState('');
+
+    useEffect(() => {
+        const unsubscribe = onAuthStateChanged(auth, (userCredentials) => {
+            console.log(userCredentials)
+            if (userCredentials) {
+                setUser(userCredentials);
+                setLoading(false);
+            }
+        })
+
+        return () => unsubscribe();
+    }, [])
 
     const register = (email, password) => {
         setLoading(true);
         return createUserWithEmailAndPassword(auth, email, password);
     }
 
-    const updatedProfile = (name,photo) => {
+    const updatedProfile = (name, photo) => {
         setLoading(true);
         return updateProfile(auth.currentUser, {
             displayName: name, photoURL: photo
         })
     }
 
-    const googleSign = () =>{
+    const googleSign = () => {
         setLoading(true);
         return signInWithPopup(auth, provider);
     }
 
-    const login = (email, password) =>{
+    const login = (email, password) => {
         setLoading(true);
         return signInWithEmailAndPassword(auth, email, password)
     }
 
-    useEffect(()=>{
-        const unsubscribe = onAuthStateChanged(auth, (userCredentials) =>{
-            setUser(userCredentials);
-            setLoading(false);
-        })
-
-        return () => unsubscribe();
-    }, [])
-
-    const logOut = () =>{
+    const logOut = () => {
         return signOut(auth);
     }
 

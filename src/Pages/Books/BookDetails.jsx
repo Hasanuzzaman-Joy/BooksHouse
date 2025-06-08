@@ -1,5 +1,6 @@
 import { useEffect } from "react";
 import { useLoaderData } from "react-router";
+import Rating from "../../Components/Rating";
 
 const BookDetails = () => {
 
@@ -66,6 +67,10 @@ const BookDetails = () => {
                     placeholder="Share your thoughts, opinions, or feedback about the book..."
                     className="w-full px-3 py-2 rounded-md border border-gray-300 bg-gray-50 text-gray-800 focus:border-gray-600 resize-none"
                 ></textarea>
+            </div>
+            <div className="my-4 flex gap-1 items-center">
+                <h1 className="text-xl font-bold">Ratings :</h1>
+                <Rating />
             </div>
             <button
                 type="submit"
