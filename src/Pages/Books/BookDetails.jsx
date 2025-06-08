@@ -6,7 +6,6 @@ import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
 import DisplayReview from "../../Components/DisplayReview";
 import Loading from "../../Components/Loading";
-import EditReview from "../../Components/EditReview";
 
 const BookDetails = () => {
 
@@ -18,7 +17,6 @@ const BookDetails = () => {
 
     const book = useLoaderData();
 
-    console.log(book)
     const { _id, book_title, cover_photo, total_page, book_author, book_category, book_overview, upvote, name, reading_status, email } = book;
 
     const [upvoted, setUpvoted] = useState(upvote);
@@ -26,7 +24,6 @@ const BookDetails = () => {
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState('');
     const [reviews, setReviews] = useState([]);
-    const [editableComment, setEditableComment] = useState('');
 
     const handleRatingChange = (newRating) => {
         setRating(newRating);
@@ -70,19 +67,25 @@ const BookDetails = () => {
             .catch(err => console.log(err))
     }
 
-    const handleUpvote = (id, email) =>{
-        axios.patch(`${import.meta.env.VITE_SERVER_URL}/upvote/${id}`, {email})
-        .then(res => {
-            if(res.data.modifiedCount){
-                setUpvoted([...upvoted, email])
-            }
-        })
-        .catch(err => console.log(err))
+    const handleUpvote = (id, email) => {
+        axios.patch(`${import.meta.env.VITE_SERVER_URL}/upvote/${id}`, { email })
+            .then(res => {
+                if (res.data.modifiedCount) {
+                    Swal.fire({
+                        icon: "success",
+                        title: "Your have upvoted successfully",
+                        showConfirmButton: false,
+                        timer: 1500
+                    });
+                    setUpvoted([...upvoted, email])
+                }
+            })
+            .catch(err => console.log(err))
     }
 
     const handleReadingUpdate = (e, id) => {
         const updateReadStatus = e.target.value;
-        const doc = { id, status: updateReadStatus };
+        const doc = { status: updateReadStatus };
 
         axios.patch(`${import.meta.env.VITE_SERVER_URL}/book/${id}`, doc)
             .then(res => {
@@ -138,7 +141,7 @@ const BookDetails = () => {
                     </div>
 
                     <div className="flex justify-center items-center pt-4">
-                        <button onClick={() =>handleUpvote(_id, user?.email)} className="btn w-[50%] bg-[#242253] hover:bg-[#bfbdff] hover:text-[#242253] transition-all text-base text-white pb-[2px]">Upvote This Book👍</button>
+                        <button onClick={() => handleUpvote(_id, user?.email)} className="btn w-[50%] bg-[#242253] hover:bg-[#bfbdff] hover:text-[#242253] transition-all text-base text-white pb-[2px]">Upvote This Book👍</button>
                     </div>
                 </div>
             </div>
@@ -188,10 +191,8 @@ const BookDetails = () => {
             </button>
 
             <Suspense fallback={<Loading />}>
-                <DisplayReview reviews={reviews} setReviews={setReviews} setEditableComment={setEditableComment} />
+                <DisplayReview reviews={reviews} setReviews={setReviews} />
             </Suspense>
-
-            <EditReview editableComment={editableComment} />
         </div>
     );
 };
