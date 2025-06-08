@@ -81,9 +81,9 @@ const AddBook = () => {
                             <label htmlFor="reading_status" className="block text-sm font-semibold">Reading Status</label>
                             <select name="reading_status" id='reading_status' className="w-full px-3 py-2 rounded-md border  border-gray-300 bg-gray-50 text-gray-800 focus:border-gray-600" required>
                                 <option value="">Select your current reading status</option>
-                                <option value="Read">Read</option>
-                                <option value="Reading">Reading</option>
-                                <option value="Want-to-Read">Want-to-Read</option>
+                        <option value="Want-to-Read">Want-to-Read</option>
+                        <option value="Reading">Reading</option>
+                        <option value="Read">Read</option>
                             </select>
                         </div>
                         <div className="space-y-2">

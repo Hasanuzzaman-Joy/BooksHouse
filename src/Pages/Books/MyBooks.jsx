@@ -23,11 +23,11 @@ const MyBooks = () => {
             })
             .catch(err => {
                 console.log(err);
-                if(err?.status === 401  || err?.status === 403){
+                if (err?.status === 401 || err?.status === 403) {
                     logOut()
-                    .then(() => {
-                        console.log('Signed Out')
-                    })
+                        .then(() => {
+                            console.log('Signed Out')
+                        })
                 }
             })
     }, [user, logOut])
@@ -66,10 +66,10 @@ const MyBooks = () => {
 
     return (
         <div className='w-full md:w-11/12 mx-auto py-10 md:px-0 px-4'>
-            <h1 className="text-4xl font-bold text-center text-[#242253] mb-6">My Reading Shelf</h1>
 
             {
-                (loading) ? <Loading /> : books.length > 0 ? (
+                (loading) ? <Loading /> : books.length > 0 ? (<>
+                    <h1 className="text-4xl font-bold text-center text-[#242253] mb-6">My Reading Shelf</h1>
                     <div className="overflow-x-auto rounded-box border border-base-content/5 bg-[#f4f3f3]">
                         <table className="table">
                             <thead className="bg-[#242253] text-white">
@@ -107,11 +107,15 @@ const MyBooks = () => {
                             </tbody>
                         </table>
                     </div>
+                </>
                 ) : (
-                    <div className="bg-[#f4f3f3] text-center space-y-4 py-12 rounded-xl shadow-md">
-                        <h2 className="text-2xl font-bold text-[#242253]">You have not added any Books in your library.</h2>
-                        <Link to="/add-book" className="btn bg-[#bfbdff] hover:bg-[#242253] transition-all text-[#242253] text-base font-medium hover:text-white ">Add a Book</Link>
-                    </div>
+                    <>
+                        <h1 className="text-4xl font-bold text-center text-[#242253] mb-6">My Reading Shelf</h1>
+                        <div className="bg-[#f4f3f3] text-center space-y-4 py-12 rounded-xl shadow-md">
+                            <h2 className="text-2xl font-bold text-[#242253]">You have not added any Books in your library.</h2>
+                            <Link to="/add-book" className="btn bg-[#bfbdff] hover:bg-[#242253] transition-all text-[#242253] text-base font-medium hover:text-white ">Add a Book</Link>
+                        </div>
+                    </>
                 )
             }
         </div>

@@ -1,6 +1,7 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { useLoaderData } from "react-router";
 import Rating from "../../Components/Rating";
+import axios from "axios";
 
 const BookDetails = () => {
 
@@ -11,6 +12,21 @@ const BookDetails = () => {
     const book = useLoaderData();
 
     const { _id, book_title, cover_photo, total_page, book_author, book_category, book_overview, upvote, name, reading_status, email } = book;
+    
+    const[read, setRead] = useState(reading_status);
+
+    const handleReadingUpdate = (e, id) =>{
+        const updateReadStatus = e.target.value;
+        const doc = {id , status: updateReadStatus} ;
+        
+        axios.patch(`${import.meta.env.VITE_SERVER_URL}/book/${id}`,doc)
+        .then(res => {
+            if(res.data.modifiedCount){
+                setRead(updateReadStatus)
+            }
+        })
+        .catch(err => console.log(err))
+    }
 
     return (
         <div className='w-full md:w-11/12 mx-auto py-10'>
@@ -31,7 +47,7 @@ const BookDetails = () => {
                             <span className="font-semibold text-[#242253]">Category:</span> {book_category}
                         </div>
                         <div>
-                            <span className="font-semibold text-[#242253]">Reading Status:</span> {reading_status}
+                            <span className="font-semibold text-[#242253]">Reading Status:</span> {read}
                         </div>
                         <div>
                             <span className="font-semibold text-[#242253]">Author:</span> {book_author}
@@ -57,6 +73,18 @@ const BookDetails = () => {
             </div>
 
             <div className="w-[70%] pt-10">
+                <h1 className="text-2xl font-bold text-[#242253] mb-2">
+                    Update the reading status :
+                </h1>
+                <div className="space-y-2 mb-5">
+                    <select onChange={(e) => handleReadingUpdate(e, _id)} defaultValue={reading_status} name="reading_status" id='reading_status' className="w-full px-3 py-2 rounded-md border  border-gray-300 bg-gray-50 text-gray-800 focus:border-gray-600" required>
+                        <option value="">Select your current reading status</option>
+                        <option value="Want-to-Read">Want-to-Read</option>
+                        <option value="Reading">Reading</option>
+                        <option value="Read">Read</option>
+                    </select>
+                </div>
+
                 <h1 className="text-2xl font-bold text-[#242253] mb-2">
                     Write a Review for This Book
                 </h1>
