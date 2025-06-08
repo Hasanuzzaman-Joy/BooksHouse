@@ -15,6 +15,7 @@ const AddBook = () => {
         const form = e.target;
         const formData = new FormData(form);
         const data = Object.fromEntries(formData);
+        data.upvote = [];
         
         axios.post(`${import.meta.env.VITE_SERVER_URL}/add-book`, data)
         .then(res => {

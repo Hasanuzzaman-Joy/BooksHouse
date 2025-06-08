@@ -18,10 +18,9 @@ const BookDetails = () => {
 
     const book = useLoaderData();
 
-    console.log(book)
     const { _id, book_title, cover_photo, total_page, book_author, book_category, book_overview, upvote, name, reading_status, email } = book;
 
-    const [upvoted, setUpvoted] = useState(upvote);
+    const [upvoted, setUpvoted] = useState([]);
     const [read, setRead] = useState(reading_status);
     const [rating, setRating] = useState(0);
     const [comment, setComment] = useState('');
@@ -138,7 +137,7 @@ const BookDetails = () => {
                     </div>
 
                     <div className="flex justify-center items-center pt-4">
-                        <button onClick={() =>handleUpvote(_id, user?.email)} className="btn w-[50%] bg-[#242253] hover:bg-[#bfbdff] hover:text-[#242253] transition-all text-base text-white pb-[2px]">Upvote This Book👍</button>
+                        <button onClick={() =>handleUpvote(_id, email)} className="btn w-[50%] bg-[#242253] hover:bg-[#bfbdff] hover:text-[#242253] transition-all text-base text-white pb-[2px]">Upvote This Book👍</button>
                     </div>
                 </div>
             </div>

@@ -31,7 +31,7 @@ const BookCard = ({ book }) => {
                 </div>
 
                 <div className="card-actions mt-4 justify-between items-center">
-                    <div className="badge badge-outline capitalize font-medium pb-[2px]">Total Upvote: {upvote}</div>
+                    <div className="badge badge-outline capitalize font-medium pb-[2px]">Total Upvote: {upvote.length}</div>
                     <Link to={`/book-details/${_id}`} className="btn bg-[#242253] text-white hover:bg-[#bfbdff] hover:text-[#242253] transition-all">
                         View Details
                     </Link>

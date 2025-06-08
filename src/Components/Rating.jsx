@@ -1,15 +1,7 @@
-import { useState } from "react";
+
 import StarRatings from "react-star-ratings";
 
-const Rating = () => {
-
-
-    const [rating, setRating] = useState(0);
-
-    const handleRatingChange = (newRating) => {
-        setRating(newRating);
-        console.log('Selected Rating:', newRating);
-    };
+const Rating = ({handleRatingChange, rating}) => {
 
     return (
         <>

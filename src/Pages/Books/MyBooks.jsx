@@ -95,7 +95,7 @@ const MyBooks = () => {
                                             <td>{book.book_title}</td>
                                             <td>{book.book_category}</td>
                                             <td>{book.reading_status}</td>
-                                            <td>{book.upvote}</td>
+                                            <td>{book.upvote.length}</td>
                                             <td>{book.name}</td>
                                             <td className="flex gap-2">
                                                 <Link to={`/update-book/${book._id}`} className='btn bg-[#bfbdff] hover:bg-[#242253] transition-all text-[#242253] hover:text-white md:px-8'>Update</Link>
