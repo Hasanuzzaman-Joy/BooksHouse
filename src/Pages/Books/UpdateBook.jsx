@@ -109,7 +109,7 @@ const UpdateBook = () => {
                         </div>
                         <div className="space-y-2">
                             <label htmlFor="upvote" className="block text-sm font-semibold">Upvote</label>
-                            <input type="text" name="upvote" value={book.upvote} id="upvote" readOnly placeholder="Upvote" className="w-full px-3 py-2 rounded-md border border-gray-300 bg-gray-50 text-gray-800 focus:border-gray-600" />
+                            <input type="text" name="upvote" value={book.upvote.length} id="upvote" readOnly placeholder="Upvote" className="w-full px-3 py-2 rounded-md border border-gray-300 bg-gray-50 text-gray-800 focus:border-gray-600" />
                         </div>
                         <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                             <div className="space-y-2">

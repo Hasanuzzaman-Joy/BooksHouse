@@ -13,7 +13,9 @@ const MainLayout = () => {
                 navigation.state === "loading" && <Loading />
             }
             <Navbar />
-            <Outlet />
+            <div className='mt-[70px]'>
+                <Outlet />
+            </div>
             <Footer />
         </>
     );

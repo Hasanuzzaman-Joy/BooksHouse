@@ -6,7 +6,6 @@ import { useState } from "react";
 
 const DisplayReview = ({ reviews, setReviews }) => {
   const { user } = useAuth();
-  const [editableComment, setEditableComment] = useState("");
   const [editableId, setEditableId] = useState(null); 
 
   const handleDelete = (id) => {
@@ -42,9 +41,10 @@ const DisplayReview = ({ reviews, setReviews }) => {
       .catch((err) => console.log(err));
   };
 
-  const handleEditableComment = (comment, id) => {
-    setEditableComment(comment);
+  const handleEditableComment = (id) => {
     setEditableId(id);
+
+    console.log(id)
   };
 
   return (
@@ -59,7 +59,7 @@ const DisplayReview = ({ reviews, setReviews }) => {
               className="border border-gray-200 rounded-lg p-4 shadow-sm bg-white my-3"
             >
               {editableId === review._id ? (
-                <EditReview editableComment={editableComment} setEditableId={setEditableId} editableId={editableId} review={review} />
+                <EditReview setReviews={setReviews} reviews={reviews} setEditableId={setEditableId} editableId={editableId} review={review} />
               ) : (
                 <>
                   <div className="flex items-center justify-between mb-2">
@@ -89,7 +89,7 @@ const DisplayReview = ({ reviews, setReviews }) => {
                           <button
                             className="text-[#242253] font-semibold hover:underline text-sm underline cursor-pointer"
                             onClick={() =>
-                              handleEditableComment(review.comment, review._id)
+                              handleEditableComment(review._id)
                             }
                           >
                             Edit

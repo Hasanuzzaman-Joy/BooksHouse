@@ -2,12 +2,12 @@ import axios from "axios";
 import { useState } from "react";
 import Swal from "sweetalert2";
 
-const EditReview = ({ editableId, setEditableId ,review}) => {
+const EditReview = ({ editableId, setEditableId, review, setReviews, reviews }) => {
     const [commented, setCommented] = useState(review?.comment || "");
 
     const handleEditReview = () => {
         const id = editableId;
-        const data = { commented };
+        const data = { comment: commented };
 
         axios.patch(`${import.meta.env.VITE_SERVER_URL}/update-review/${id}`, data)
             .then(res => {
@@ -18,8 +18,14 @@ const EditReview = ({ editableId, setEditableId ,review}) => {
                         showConfirmButton: false,
                         timer: 1500
                     });
-                    setEditableId(null);
-                    setCommented(commented);
+                    
+                    // Update the review in the parent state
+                    const updatedReviews = reviews.map(newReview =>
+                        newReview._id === id ? { ...newReview, comment: commented } : newReview
+                    );
+                    setReviews(updatedReviews);
+
+                    setEditableId(null);  // close the edit UI
                 }
             })
             .catch(err => console.log(err));
@@ -28,7 +34,7 @@ const EditReview = ({ editableId, setEditableId ,review}) => {
     return (
         <div>
             <textarea
-                defaultValue={review?.comment}
+                value={commented}
                 onChange={(e) => setCommented(e.target.value)}
                 name="editableComment"
                 id="editableComment"
