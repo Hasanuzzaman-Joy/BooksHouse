@@ -40,23 +40,55 @@ const Profile = () => {
         value
     }));
 
-    console.log(chartData);
+    // Calculate total books count
+    const totalBooks = books.length;
+
+    // Get counts per category or 0 if missing
+    const fictionCount = categoryCount['fiction'] || 0;
+    const nonFictionCount = categoryCount['non-fiction'] || categoryCount['nonfiction'] || 0;
+    const fantasyCount = categoryCount['fantasy'] || 0;
 
     return (
         <>
             {
                 loading ? <Loading /> :
-                    <div className="w-full md:w-11/12 mx-auto py-7">
-                        <div className="flex justify-self-center avatar avatar-online">
+                    <div className="w-full md:w-11/12 bg-[#f4f3f3] mx-auto py-7">
+                        <div className="flex justify-self-center avatar avatar-online mt-10">
                             <div className="w-32 rounded-full">
                                 <img src={user?.photoURL} />
                             </div>
                         </div>
                         <div className="flex flex-col justify-center items-center space-y-2 py-5">
-                            <h1 className="text-xl font-semibold text-[#242253]">Name : {user?.displayName}</h1>
-                            <h2 className="text-xl font-semibold text-[#242253]">Email : {user?.email}</h2>
+                            <h1 className="text-lg font-semibold">Name : {user?.displayName}</h1>
+                            <h2 className="text-lg font-semibold">Email : {user?.email}</h2>
                         </div>
-                        <CustomActiveShapePieChart data={chartData} />
+                        <div className="flex gap-10 justify-center items-center">
+                            <div>
+                                <h1 className="text-2xl font-bold text-[#242253]">My Bookshelf Summary :</h1>
+                                <table className="table w-[600px] border border-gray-400 mt-6 table-fixed">
+                                    <thead className="bg-[#242253] text-white">
+                                        <tr className="text-sm text-center">
+                                            <th className="border border-gray-300">Total Books</th>
+                                            <th className="border border-gray-300">Fiction</th>
+                                            <th className="border border-gray-300">Non-Fiction</th>
+                                            <th className="border border-gray-300">Fantasy</th>
+                                        </tr>
+                                    </thead>
+                                    <tbody>
+                                        <tr className="text-[#242253] text-sm font-bold text-center">
+                                            <td className="border border-gray-300">{totalBooks}</td>
+                                            <td className="border border-gray-300">{fictionCount}</td>
+                                            <td className="border border-gray-300">{nonFictionCount}</td>
+                                            <td className="border border-gray-300">{fantasyCount}</td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                            <div className="w-[400px] h-[350px]">
+                                <CustomActiveShapePieChart data={chartData} />
+                            </div>
+                        </div>
+
                     </div>
             }
         </>
