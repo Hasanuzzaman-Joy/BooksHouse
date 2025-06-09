@@ -6,3 +6,8 @@
 *{
     font-family: "Poppins", sans-serif;
 }
+
+.recharts-sector:focus {
+  outline: none;
+  box-shadow: none;
+}
