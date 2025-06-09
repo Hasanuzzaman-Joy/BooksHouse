@@ -24,9 +24,7 @@ const router = createBrowserRouter([
             },
             {
                 path:'/bookshelf',
-                loader:() => fetch(`${import.meta.env.VITE_SERVER_URL}/all-books`),
-                Component:Bookshelf,
-                hydrateFallbackElement:<Loading />
+                Component:Bookshelf
             },
             {
                 path:'/my-books',

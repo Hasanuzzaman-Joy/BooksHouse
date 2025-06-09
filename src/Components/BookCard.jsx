@@ -1,8 +1,9 @@
+
 import { Link } from "react-router";
 
 const BookCard = ({ book }) => {
 
-    const { _id, book_title, cover_photo, total_page, book_author, book_category, book_overview, upvote, name } = book
+    const { _id, book_title, cover_photo, total_page, book_author, book_category, book_overview, upvote, name, reading_status } = book
 
     return (
         <div className="card w-full bg-[#f4f3f3] shadow-lg border border-gray-200 hover:shadow-xl transition duration-300">
@@ -24,6 +25,7 @@ const BookCard = ({ book }) => {
                     <p className="text-[#242253]"><span className="font-semibold">Total Pages:</span> {total_page}</p>
                     <p className="text-[#242253]"><span className="font-semibold">Author:</span> {book_author}</p>
                     <p className="text-[#242253]"><span className="font-semibold">Category:</span> {book_category}</p>
+                    <p className="text-[#242253]"><span className="font-semibold">read:</span> {reading_status}</p>
                 </div>
 
                 <div className="text-sm text-gray-500">

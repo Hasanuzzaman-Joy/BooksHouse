@@ -10,29 +10,29 @@ const AddBook = () => {
     const { user } = useAuth();
     const navigate = useNavigate();
 
-    const handleBookForm = (e) =>{
+    const handleBookForm = (e) => {
         e.preventDefault();
         const form = e.target;
         const formData = new FormData(form);
         const data = Object.fromEntries(formData);
         data.upvote = [];
-        
+
         axios.post(`${import.meta.env.VITE_SERVER_URL}/add-book`, data)
-        .then(res => {
-            if (res.data.insertedId) {
+            .then(res => {
+                if (res.data.insertedId) {
                     Swal.fire({
                         title: "You've successfully added",
                         icon: "success",
                         showConfirmButton: false,
                         timer: 2500
                     });
-                    
+
                     setTimeout(() => {
                         navigate('/my-books')
                     }, 2200);
                 }
-        })
-        .catch(err => console.log(err))
+            })
+            .catch(err => console.log(err))
     }
 
     return (
@@ -82,9 +82,9 @@ const AddBook = () => {
                             <label htmlFor="reading_status" className="block text-sm font-semibold">Reading Status</label>
                             <select name="reading_status" id='reading_status' className="w-full px-3 py-2 rounded-md border  border-gray-300 bg-gray-50 text-gray-800 focus:border-gray-600" required>
                                 <option value="">Select your current reading status</option>
-                        <option value="Want-to-Read">Want-to-Read</option>
-                        <option value="Reading">Reading</option>
-                        <option value="Read">Read</option>
+                                <option value="Want-to-Read">Want-to-Read</option>
+                                <option value="Reading">Reading</option>
+                                <option value="Read">Read</option>
                             </select>
                         </div>
                         <div className="space-y-2">
