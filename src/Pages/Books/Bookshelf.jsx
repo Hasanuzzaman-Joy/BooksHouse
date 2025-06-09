@@ -30,16 +30,16 @@ const Bookshelf = () => {
                     (
                         <div className="w-full md:w-11/12 mx-auto py-7">
                             <div className="flex flex-col mb-3">
-                                <h1 className="text-4xl font-bold text-center text-[#242253] mb-2">
+                                <h1 className="text-4xl font-bold text-center text-[#242253] mb-2 md:px-0 px-4">
                                     Explore the Library
                                 </h1>
-                                <h3 className="text-lg text-center text-gray-600 mb-6">
+                                <h3 className="text-lg text-center text-gray-600 mb-6 md:px-0 px-4">
                                     Discover books shared by readers across the platform.
                                 </h3>
                                 <div className="flex flex-col items-center gap-4 mb-6">
 
                                     {/* Search Input */}
-                                    <div className="flex items-center gap-2 w-full max-w-md mx-auto">
+                                    <div className="flex items-center gap-2 w-full max-w-md mx-auto md:px-0 px-4">
                                         <label htmlFor="book_search" className="text-sm font-semibold text-gray-700 whitespace-nowrap">
                                             Search:
                                         </label>
@@ -55,7 +55,7 @@ const Bookshelf = () => {
                                     </div>
 
                                     {/* Sort Dropdown */}
-                                    <div className="flex items-center gap-2 w-full max-w-md mx-auto">
+                                    <div className="flex items-center gap-2 w-full max-w-md mx-auto md:px-0 px-4">
                                         <label htmlFor="reading_status" className="text-sm font-semibold text-gray-700 whitespace-nowrap">
                                             Sort by:
                                         </label>
@@ -75,7 +75,7 @@ const Bookshelf = () => {
 
                             </div>
 
-                            <div className="grid grid-cols-3 gap-5">
+                            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:px-0 px-4">
                                 {
                                     books.map(book => <BookCard key={book._id} book={book} />)
                                 }

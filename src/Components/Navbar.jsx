@@ -34,7 +34,7 @@ const Navbar = () => {
             <div className="navbar w-full md:w-11/12 mx-auto bg-white border-b-[0.5px] border-[#dbdbdb]">
                 <div className="navbar-start">
                     <div className="dropdown">
-                        <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden">
+                        <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden -ml-3">
                             <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor"> <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" /> </svg>
                         </div>
                         <ul
@@ -43,7 +43,7 @@ const Navbar = () => {
                             {link}
                         </ul>
                     </div>
-                    <div className='flex justify-center items-center -ml-4 md:ml-0'>
+                    <div className='flex justify-center items-center -ml-2 md:ml-0'>
                         <img src="/logo.png" className='w-8' alt="logo" />
                         <h1 className='text-[#242253] font-bold text-base md:text-2xl -ml-[2px]'>Books<span className='text-[#faf34a] '>House</span></h1>
                     </div>

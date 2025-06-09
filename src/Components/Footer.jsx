@@ -5,25 +5,25 @@ import { Link } from "react-router";
 const Footer = () => {
     return (
         <>
-            <div className="footer sm:footer-horizontal bg-[#bfbdff] text-base-content p-10 w-full md:w-11/12 mx-auto">
-                <aside className="flex justify-center items-center">
+            <div className="footer grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 bg-[#bfbdff] text-base-content py-10 px-5 md:py-16 md:px-10 w-full md:w-11/12 mx-auto">
+                <aside className="flex flex-row justify-center items-center">
                     <img src="/logo.png" alt="" className="w-14"/>
-                    <h1 className='text-[#242253] font-bold text-base md:text-2xl -ml-[2px]'>Books<span className='text-[#faf34a] '>House</span></h1>
+                    <h1 className='text-[#242253] font-bold text-base md:text-xl -ml-[2px]'>Books<span className='text-[#faf34a]'>House</span></h1>
                 </aside>
-                <nav>
+                <nav className="md:ml-2 lg:ml-5">
                     <h6 className="footer-title font-bold text-lg">Legal</h6>
                     <Link className="link link-hover text-base font-medium">Terms & Conditions</Link>
                     <Link className="link link-hover text-base font-medium">Privacy policy</Link>
                     <Link className="link link-hover text-base font-medium">Cookie policy</Link>
                 </nav>
-                <nav>
+                <nav className="md:ml-2 lg:ml-2">
                     <h6 className="footer-title font-bold text-lg">Contact Us</h6>
                     <div className="flex flex-col gap-3">
                         <div className="flex justify-center items-center gap-2 "><IoIosMail size={25} /> <h1 className="font-semibold text-base">Email: abc@gmail.com</h1></div>
                         <div className="flex justify-center items-center gap-2"><FaPhoneAlt size={18} /> <h1 className="font-semibold text-base">Phone: +880187723218</h1></div>
                     </div>
                 </nav>
-                <nav>
+                <nav className="md:ml-2 lg:ml-8">
                     <h6 className="footer-title font-bold text-lg">Social Links</h6>
                     <div className="grid grid-flow-col gap-4">
                         <a href='https://x.com/' target='blank'>

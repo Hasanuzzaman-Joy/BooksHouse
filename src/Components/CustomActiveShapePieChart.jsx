@@ -55,7 +55,7 @@ const CustomActiveShapePieChart = ({ data }) => {
     };
 
     return (
-        <div className="w-full h-32 md:h-[350px]">
+        <div className="w-full h-[300px] md:h-[350px]">
             <ResponsiveContainer>
                 <PieChart>
                     <Pie

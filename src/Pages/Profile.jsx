@@ -10,8 +10,6 @@ const Profile = () => {
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    console.log(books)
-
     useEffect(() => {
         axios(`${import.meta.env.VITE_SERVER_URL}/books?email=${user?.email}`, {
             headers: {
@@ -62,10 +60,10 @@ const Profile = () => {
                             <h1 className="text-lg font-semibold">Name : {user?.displayName}</h1>
                             <h2 className="text-lg font-semibold">Email : {user?.email}</h2>
                         </div>
-                        <div className="flex gap-10 justify-center items-center">
+                        <div className="flex gap-10 flex-col md:flex-row justify-center items-center px-5">
                             <div>
-                                <h1 className="text-2xl font-bold text-[#242253]">My Bookshelf Summary :</h1>
-                                <table className="table w-[600px] border border-gray-400 mt-6 table-fixed">
+                                <h1 className="text-xl mt-10 md:mt-0 text-center md:text-2xl font-bold text-[#242253]">My Bookshelf Summary :</h1>
+                                <table className="table w-full md:w-[480px] border border-gray-400 mt-3 md:mt-6 table-fixed">
                                     <thead className="bg-[#242253] text-white">
                                         <tr className="text-sm text-center">
                                             <th className="border border-gray-300">Total Books</th>
@@ -84,7 +82,7 @@ const Profile = () => {
                                     </tbody>
                                 </table>
                             </div>
-                            <div className="w-[400px] h-[350px]">
+                            <div className="w-full md:w-[250px]">
                                 <CustomActiveShapePieChart data={chartData} />
                             </div>
                         </div>
