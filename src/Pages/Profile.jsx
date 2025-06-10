@@ -63,7 +63,7 @@ const Profile = () => {
                         <div className="flex gap-10 flex-col md:flex-row justify-center items-center px-5">
                             <div>
                                 <h1 className="text-xl mt-10 md:mt-0 text-center md:text-2xl font-bold text-[#242253]">My Bookshelf Summary :</h1>
-                                <table className="table w-full md:w-[480px] border border-gray-400 mt-3 md:mt-6 table-fixed">
+                                <table className="table w-full md:w-[450px] border border-gray-400 mt-3 md:mt-6 table-fixed">
                                     <thead className="bg-[#242253] text-white">
                                         <tr className="text-[11px] md:text-sm text-center">
                                             <th className="border border-gray-300">Total Books</th>

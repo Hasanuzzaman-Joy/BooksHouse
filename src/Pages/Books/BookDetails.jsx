@@ -99,6 +99,23 @@ const BookDetails = () => {
 
     const handleReadingUpdate = (e, id) => {
         const updateReadStatus = e.target.value;
+
+        if (
+            (read === "Want-to-Read" && updateReadStatus !== "Reading") ||
+            (read === "Reading" && updateReadStatus !== "Read")
+        ) {
+            toast.error("Invalid status transition. You can only go forward.", {
+                position: "top-right",
+                autoClose: 2000,
+                hideProgressBar: false,
+                closeOnClick: true,
+                pauseOnHover: true,
+                draggable: true,
+                theme: "colored",
+            });
+            return;
+        }
+
         const doc = { status: updateReadStatus };
 
         axios.patch(`${import.meta.env.VITE_SERVER_URL}/book/${id}`, doc)
@@ -168,11 +185,18 @@ const BookDetails = () => {
                             Update the reading status :
                         </h1>
                         <div className="space-y-2 mb-5">
-                            <select onChange={(e) => handleReadingUpdate(e, _id)} defaultValue={reading_status} name="reading_status" id='reading_status' className="w-full px-3 py-2 rounded-md border  border-gray-300 bg-gray-50 text-gray-800 focus:border-gray-600" required>
-                                <option value="">Select your current reading status</option>
-                                <option value="Want-to-Read">Want-to-Read</option>
-                                <option value="Reading">Reading</option>
-                                <option value="Read">Read</option>
+                            <select
+                                onChange={(e) => handleReadingUpdate(e, _id)}
+                                value={read}
+                                name="reading_status"
+                                id="reading_status"
+                                className="w-full px-3 py-2 rounded-md border border-gray-300 bg-gray-50 text-gray-800 focus:border-gray-600"
+                                required
+                            >
+                                <option value="" disabled>Select your current reading status</option>
+                                <option value="Want-to-Read" disabled={read !== "Want-to-Read"}>Want-to-Read</option>
+                                <option value="Reading" disabled={read !== "Want-to-Read"}>Reading</option>
+                                <option value="Read" disabled={read !== "Reading"}>Read</option>
                             </select>
                         </div>
                     </> : <></>
