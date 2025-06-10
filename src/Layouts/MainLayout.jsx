@@ -2,6 +2,7 @@ import { Outlet, useNavigation } from 'react-router';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import Loading from '../Components/Loading';
+import ScrollToTop from '../Components/ScrollToTop';
 
 const MainLayout = () => {
 
@@ -12,6 +13,7 @@ const MainLayout = () => {
             {
                 navigation.state === "loading" && <Loading />
             }
+            <ScrollToTop />
             <Navbar />
             <div className=' mt-[60px] md:mt-[70px]'>
                 <Outlet />
@@ -22,6 +24,3 @@ const MainLayout = () => {
 };
 
 export default MainLayout;
-
-
-// #faf34a,242253

@@ -1,0 +1,20 @@
+[
+  {
+    "id": 1,
+    "name": "Fiction",
+    "subtitle": "Explore imaginary worlds",
+    "image": "https://i.ibb.co/v4bsRxCc/Fiction.png"
+  },
+  {
+    "id": 2,
+    "name": "Non-Fiction",
+    "subtitle": "Real stories, real knowledge",
+    "image": "https://i.ibb.co/WpsBGpR0/Non-fiction.png"
+  },
+  {
+    "id": 3,
+    "name": "Fantasy",
+    "subtitle": "Magic, myths, and legends",
+    "image": "https://i.ibb.co/Z6kmLfTq/Fantasy.png"
+  }
+]
