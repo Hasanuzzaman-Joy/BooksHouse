@@ -65,7 +65,7 @@ const Profile = () => {
                                 <h1 className="text-xl mt-10 md:mt-0 text-center md:text-2xl font-bold text-[#242253]">My Bookshelf Summary :</h1>
                                 <table className="table w-full md:w-[480px] border border-gray-400 mt-3 md:mt-6 table-fixed">
                                     <thead className="bg-[#242253] text-white">
-                                        <tr className="text-sm text-center">
+                                        <tr className="text-[11px] md:text-sm text-center">
                                             <th className="border border-gray-300">Total Books</th>
                                             <th className="border border-gray-300">Fiction</th>
                                             <th className="border border-gray-300">Non-Fiction</th>
@@ -73,7 +73,7 @@ const Profile = () => {
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        <tr className="text-[#242253] text-sm font-bold text-center">
+                                        <tr className="text-[#242253] text-[11px] md:text-sm font-bold text-center">
                                             <td className="border border-gray-300">{totalBooks}</td>
                                             <td className="border border-gray-300">{fictionCount}</td>
                                             <td className="border border-gray-300">{nonFictionCount}</td>
@@ -82,7 +82,7 @@ const Profile = () => {
                                     </tbody>
                                 </table>
                             </div>
-                            <div className="w-full md:w-[250px]">
+                            <div className="w-full md:w-[450px]">
                                 <CustomActiveShapePieChart data={chartData} />
                             </div>
                         </div>

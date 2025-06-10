@@ -11,7 +11,7 @@ const Register = () => {
     }, [])
 
     const navigate = useNavigate();
-    const { register, updatedProfile, googleSign, setErr, err } = useAuth();
+    const { register, updatedProfile, googleSign } = useAuth();
 
     const handleGoogle = () => {
         googleSign
@@ -47,7 +47,7 @@ const Register = () => {
             })
     }
 
-    const hanedleRegisterForm = (e) => {
+    const handleRegisterForm = (e) => {
         e.preventDefault();
 
         const form = e.target;
@@ -56,20 +56,48 @@ const Register = () => {
         const photo = form.photo.value;
         const password = form.password.value;
 
-        setErr('');
-
         if (!/[A-Z]/.test(password)) {
-            setErr("Password must have at least one uppercase letter.");
+            toast.error("Password must have at least one uppercase letter.", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
             return
         }
 
         if (!/[a-z]/.test(password)) {
-            setErr("Password must have at least one lowercase letter.");
+            toast.error("Password must have at least one lowercase letter.", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
             return
         }
 
         if (password.length < 6) {
-            setErr("Password must be at least 6 characters long.");
+            toast.error("Password must be at least 6 characters long.", {
+                position: "top-right",
+                autoClose: 3000,
+                hideProgressBar: false,
+                closeOnClick: false,
+                pauseOnHover: true,
+                draggable: true,
+                progress: undefined,
+                theme: "light",
+                transition: Bounce,
+            });
             return
         }
 
@@ -125,9 +153,8 @@ const Register = () => {
                     <p className="px-3">OR</p>
                     <hr className="w-full" />
                 </div>
-                <form className="space-y-8" onSubmit={hanedleRegisterForm}>
+                <form className="space-y-8" onSubmit={handleRegisterForm}>
                     <div className="space-y-4">
-                        {err && <p className='text-sm' style={{ color: 'red' }}>{err}</p>}
                         <div className="space-y-2">
                             <label htmlFor="name" className="block text-base font-semibold">Name</label>
                             <input type="text" name="name" id="name" placeholder="Your Name" className="w-full px-3 py-2 border rounded-md dark:border-gray-300  border-gray-300 bg-gray-50 text-gray-800 focus:border-gray-600" required />
