@@ -1,12 +1,14 @@
-import { Outlet, useNavigation } from 'react-router';
+import { Outlet, useLocation, useNavigation } from 'react-router';
 import Navbar from '../Components/Navbar';
 import Footer from '../Components/Footer';
 import Loading from '../Components/Loading';
 import ScrollToTop from '../Components/ScrollToTop';
+import PageWrapper from '../Components/PageWrapper';
 
 const MainLayout = () => {
 
     const navigation = useNavigation();
+    const location = useLocation();
 
     return (
         <>
@@ -16,7 +18,9 @@ const MainLayout = () => {
             <ScrollToTop />
             <Navbar />
             <div className=' mt-[60px] md:mt-[70px]'>
-                <Outlet />
+                <PageWrapper key={location.pathname}>
+                    <Outlet />
+                </PageWrapper>
             </div>
             <Footer />
         </>

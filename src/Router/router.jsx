@@ -23,54 +23,60 @@ const router = createBrowserRouter([
                 Component: Home
             },
             {
-                path:'/bookshelf',
-                Component:Bookshelf
+                path: '/loading',
+                Component: Loading
             },
             {
-                path:'/my-books',
-                element:<PrivateRoute>
+                path: '/bookshelf',
+                Component: Bookshelf
+            },
+            {
+                path: '/my-books',
+                element: <PrivateRoute>
                     <MyBooks />
                 </PrivateRoute>
             },
             {
-                path:'/add-book',
-                element:<PrivateRoute>
+                path: '/add-book',
+                element: <PrivateRoute>
                     <AddBook />
                 </PrivateRoute>
             },
             {
-                path:'/update-book/:id',
-                loader:({params}) => fetch(`${import.meta.env.VITE_SERVER_URL}/book/${params.id}`),
-                element:<PrivateRoute>
+                path: '/update-book/:id',
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_SERVER_URL}/book/${params.id}`),
+                element: <PrivateRoute>
                     <UpdateBook />
                 </PrivateRoute>,
-                hydrateFallbackElement:<Loading />
+                hydrateFallbackElement: <Loading />,
+                errorElement: <Error />
             },
             {
-                path:'/book-details/:id',
-                loader:({params}) => fetch(`${import.meta.env.VITE_SERVER_URL}/book/${params.id}`),
-                element:<BookDetails />,
-                hydrateFallbackElement:<Loading />
+                path: '/book-details/:id',
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_SERVER_URL}/book/${params.id}`),
+                element: <BookDetails />,
+                hydrateFallbackElement: <Loading />,
+                errorElement: <Error />
             },
             {
-                path:'/profile',
-                element:<PrivateRoute>
+                path: '/profile',
+                element: <PrivateRoute>
                     <Profile />
                 </PrivateRoute>
             },
             {
-                path:'/login',
-                Component:Login
+                path: '/login',
+                Component: Login
             },
             {
-                path:'/register',
-                Component:Register
+                path: '/register',
+                Component: Register
+            },
+            {
+                path: "*",
+                Component: Error
             }
         ]
-    },
-    {
-        path: "*",
-        Component: Error
     }
 ])
 

@@ -12,12 +12,12 @@ const CallToAction = () => {
 
       <div className="relative z-10 w-full md:max-w-3xl mx-auto text-center">
         <h2 className="text-4xl font-bold mb-4 text-white">
-          Grow Healthier Plants with Plenture
+           Track, review, and discover books.
         </h2>
         <p className="text-base mb-8 text-white">
-          Track watering schedules, monitor health, and never miss a care routine again. Join a community of mindful plant lovers using Plenture daily.
+          Track your reading journey, share reviews, and discover popular reads — all in one beautiful digital bookshelf.
         </p>
-        <Link to='/addPlant' className="btn bg-[#242253] text-base font-semibold hover:text-[#242253] hover:bg-[#bfbdff] text-white px-8 py-4 transition"
+        <Link to='/bookshelf' className="btn bg-[#242253] text-base font-semibold hover:text-[#242253] hover:bg-[#bfbdff] text-white px-8 py-4 transition"
         >
           Get Started
         </Link>

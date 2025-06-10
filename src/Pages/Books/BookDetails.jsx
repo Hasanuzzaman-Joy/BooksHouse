@@ -173,7 +173,16 @@ const BookDetails = () => {
                     </div>
 
                     <div className="flex justify-center items-center pt-4">
-                        <button onClick={() => handleUpvote(_id, user?.email)} className="btn w-[50%] bg-[#242253] hover:bg-[#bfbdff] hover:text-[#242253] transition-all text-base text-white pb-[2px]">Upvote This Book👍</button>
+                        <button
+                            onClick={() => handleUpvote(_id, user?.email)}
+                            disabled={!user?.email}
+                            className={`btn w-[50%] transition-all text-base pb-[2px] 
+      ${user?.email
+                                    ? "bg-[#242253] hover:bg-[#bfbdff] hover:text-[#242253] text-white"
+                                    : "bg-gray-400 cursor-not-allowed text-gray-700"}`}
+                        >
+                            Upvote This Book👍
+                        </button>
                     </div>
                 </div>
             </div>
