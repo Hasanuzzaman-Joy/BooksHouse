@@ -1,19 +1,16 @@
 # 📚 BooksHouse - Virtual Bookshelf
 
 ## 🌐 Live Site
-
 👉 [Visit BooksHouse Live](https://bookshouse-b97b1.web.app/)
 
 ---
 
 ## 🚀 Project Overview
-
 BooksHouse is a sleek and modern full-stack MERN web application that helps readers track their books—whether you're currently reading, planning to read, or just finished a great one. Users can add any type of book for tracking, making it easy to manage their reading journey across genres, categories, or formats.
 
 ---
 
 ## ✨ Key Features
-
 - **🔒 Secure Authentication** - Email/password and Google login via Firebase
 - **📚 Book Management** - Add, update, and delete books with detailed information
 - **🌟 Community Interaction** - Upvote popular books and read/write reviews
@@ -25,7 +22,6 @@ BooksHouse is a sleek and modern full-stack MERN web application that helps read
 ---
 
 ## 🛠️ Technologies & Packages Used
-
 | npm Packages           | Purpose                                              |
 | ---------------------- | ---------------------------------------------------- |
 | **React.js**           | Frontend framework                                   |
@@ -68,7 +64,6 @@ BooksHouse is a sleek and modern full-stack MERN web application that helps read
 ---
 
 ## 📌 Additional Features
-
 - **JWT Authentication** - Secure token-based auth system
 - **Reading Tracker** - Update reading status with progress
 - **Review System** - Post, edit, and delete reviews

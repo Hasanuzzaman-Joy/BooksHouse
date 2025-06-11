@@ -37,11 +37,20 @@ const Error = () => {
                 isLoading || isNavigating ? <Loading /> : <>
                     <main className="flex flex-col items-center justify-center min-h-screen p-4 bg-white text-center w-11/12 mx-auto">
                         <section className="w-full max-w-md">
-                            <h1 className="text-3xl font-bold text-gray-800 mt-4">404 - Page Not Found</h1>
+                            <h1 className="text-3xl font-bold text-gray-800">404 - Page Not Found</h1>
                             <p className="text-gray-600 mt-2 mb-6">
                                 Oops! The page you’re looking for doesn’t exist.
                             </p>
-                            <Lottie options={lottieOptions} height={250} width={380} />
+
+                            <motion.div
+                                animate={{
+                                    y: [0, 15, 0],
+                                    transition: { duration: 3, repeat: Infinity }
+                                }}
+                            >
+                                <Lottie options={lottieOptions} height={250} width={380} />
+                            </motion.div>
+                            
                             <motion.div className='mt-14'
                                 initial={{ scale: 1 }}
                                 animate={{ scale: [1, 1.10, 1] }}

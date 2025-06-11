@@ -1,3 +1,5 @@
+import { motion } from "motion/react"
+
 const About = () => {
     return (
         <div className='grid grid-cols-1 md:grid-cols-2 w-full gap-6 mt-15 md:mt-20 md:px-0 px-4'>
@@ -16,10 +18,14 @@ const About = () => {
                 </ul>
             </div>
             <div>
-                <img
+                <motion.img
                     src="https://i.ibb.co/j9LnmhqH/about.png"
-                    alt="About Plant Care Tracker"
+                    alt=""
                     className='w-3/4 block mx-auto mt-4 md:mt-7 md:rounded-lg'
+                    animate={{
+                        y:[0,20,0],
+                        transition:{duration: 3, repeat:Infinity}
+                    }}
                 />
             </div>
         </div>

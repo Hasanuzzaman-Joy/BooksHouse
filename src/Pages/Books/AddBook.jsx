@@ -116,7 +116,7 @@ const AddBook = () => {
                         type="submit"
                         className="w-full px-8 py-2 font-semibold rounded-md bg-[#242253] hover:bg-[#bfbdff] text-white hover:text-[#242253] border border-transparent cursor-pointer transition-all"
                     >
-                        Add Plant
+                        Add Book
                     </button>
                 </form>
             </div>
