@@ -16,5 +16,24 @@
     "name": "Fantasy",
     "subtitle": "Magic, myths, and legends",
     "image": "https://i.ibb.co/Z6kmLfTq/Fantasy.png"
+  },
+  {
+    "id": 4,
+    "name": "Historical",
+    "subtitle": "Travel through the past",
+    "image": "https://i.ibb.co/5W9fBVd1/Historical.png"
+  },
+  {
+    "id": 5,
+    "name": "Biography",
+    "subtitle": "Stories of real lives",
+    "image": "https://i.ibb.co/Q7mSY4tR/Biography.png"
+  },
+  {
+    "id": 6,
+    "name": "Comics",
+    "subtitle": "Visual storytelling & superheroes",
+    "image": "https://i.ibb.co/gBs1dTK/comics.png"
   }
 ]
+

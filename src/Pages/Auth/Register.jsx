@@ -186,7 +186,7 @@ const Register = () => {
                     </div>
                     <button
                         type="submit"
-                        className="w-full px-8 py-2 font-semibold rounded-md bg-[#242253] hover:bg-transparent text-white border border-transparent hover:border-gray-300 text-base cursor-pointer transition-all hover:text-black"
+                        className="w-full px-8 py-2 font-semibold rounded-md bg-[#242253] hover:bg-[#bfbdff] text-white border border-transparent hover:border-gray-300 text-base cursor-pointer transition-all hover:text-black"
                     >
                         Register Now
                     </button>

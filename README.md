@@ -64,7 +64,6 @@ BooksHouse is a sleek and modern full-stack MERN web application that helps read
 ---
 
 ## 📌 Additional Features
-- **JWT Authentication** - Secure token-based auth system
 - **Reading Tracker** - Update reading status with progress
 - **Review System** - Post, edit, and delete reviews
 - **Upvote Mechanism** - Community-driven book ranking

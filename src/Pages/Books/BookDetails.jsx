@@ -134,7 +134,7 @@ const BookDetails = () => {
     const hasReviewed = reviews.find(review => review?.reviewerEmail === user?.email);
 
     return (
-        <div className='w-full md:w-11/12 mx-auto py-10'>
+        <div className='w-full md:w-11/12 mx-auto py-10 px-4 md:px-0'>
             <ToastContainer />
             <div className="bg-[#f4f3f3] mx-auto rounded-xl shadow-lg overflow-hidden md:flex">
                 <figure className="w-full md:w-1/2 object-cover h-120 flex items-center justify-center bg-[#bfbdff]">
@@ -145,7 +145,7 @@ const BookDetails = () => {
                     />
                 </figure>
                 <div className="px-6 flex flex-col justify-center md:w-1/2 space-y-4">
-                    <h2 className="text-3xl font-bold text-[#242253] text-center">{book_title}</h2>
+                    <h2 className="text-3xl font-bold text-[#242253] text-center mt-8 md:mt-0">{book_title}</h2>
                     <p className="text-gray-600 mb-5 text-base text-center">{book_overview}</p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base text-gray-700 justify-items-center w-full">
@@ -176,7 +176,7 @@ const BookDetails = () => {
                         <button
                             onClick={() => handleUpvote(_id, user?.email)}
                             disabled={!user?.email}
-                            className={`btn w-[50%] transition-all text-base pb-[2px] 
+                            className={`btn w-full md:w-[50%] transition-all text-base pb-[2px] mb-8 md:mb-0
       ${user?.email
                                     ? "bg-[#242253] hover:bg-[#bfbdff] hover:text-[#242253] text-white"
                                     : "bg-gray-400 cursor-not-allowed text-gray-700"}`}
@@ -187,7 +187,7 @@ const BookDetails = () => {
                 </div>
             </div>
 
-            <div className="w-[70%] pt-10">
+            <div className="w-full md:w-[70%] pt-10">
                 {
                     email === user?.email ? <>
                         <h1 className="text-2xl font-bold text-[#242253] mb-2">

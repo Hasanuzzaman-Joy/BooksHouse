@@ -39,7 +39,7 @@ const Bookshelf = () => {
                                 <div className="flex flex-col items-center gap-4 mb-6">
 
                                     {/* Search Input */}
-                                    <div className="flex items-center gap-2 w-full max-w-md mx-auto md:px-0 px-4">
+                                    <div className="hidden md:flex items-center gap-2 w-full max-w-md mx-auto md:px-0 px-4">
                                         <label htmlFor="book_search" className="text-sm font-semibold text-gray-700 whitespace-nowrap">
                                             Search:
                                         </label>
@@ -75,7 +75,7 @@ const Bookshelf = () => {
 
                             </div>
 
-                            <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:px-0 px-4">
+                            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:px-0 px-4">
                                 {
                                     books.map(book => <BookCard key={book._id} book={book} />)
                                 }

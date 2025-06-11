@@ -6,7 +6,7 @@ export default function FeaturedCategories({ categoriesData }) {
     const categories = use(categoriesData);
 
     return (
-        <section className="grid grid-cols-1 md:grid-cols-3 gap-5">
+        <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {
                 categories.map(category =>
                     <div

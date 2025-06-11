@@ -76,6 +76,9 @@ const AddBook = () => {
                                 <option value="Fiction">Fiction</option>
                                 <option value="Non-Fiction">Non-Fiction</option>
                                 <option value="Fantasy">Fantasy</option>
+                                <option value="Historical">Historical</option>
+                                <option value="Biography">Biography</option>
+                                <option value="Comics">Comics</option>
                             </select>
                         </div>
                         <div className="space-y-2">

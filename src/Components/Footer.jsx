@@ -12,9 +12,9 @@ const Footer = () => {
                 </aside>
                 <nav className="md:ml-2 lg:ml-5">
                     <h6 className="footer-title font-bold text-lg">Legal</h6>
-                    <Link className="link link-hover text-base font-medium">Terms & Conditions</Link>
-                    <Link className="link link-hover text-base font-medium">Privacy policy</Link>
-                    <Link className="link link-hover text-base font-medium">Cookie policy</Link>
+                    <Link to="#" className="link link-hover text-base font-medium">Terms & Conditions</Link>
+                    <Link to="#" className="link link-hover text-base font-medium">Privacy policy</Link>
+                    <Link to="#" className="link link-hover text-base font-medium">Cookie policy</Link>
                 </nav>
                 <nav className="md:ml-2 lg:ml-2">
                     <h6 className="footer-title font-bold text-lg">Contact Us</h6>

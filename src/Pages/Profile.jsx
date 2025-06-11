@@ -45,6 +45,9 @@ const Profile = () => {
     const fictionCount = categoryCount['fiction'] || 0;
     const nonFictionCount = categoryCount['non-fiction'] || categoryCount['nonfiction'] || 0;
     const fantasyCount = categoryCount['fantasy'] || 0;
+    const historicalCount = categoryCount['historical'] || 0;
+    const biographyCount = categoryCount['biography'] || 0;
+    const comicsCount = categoryCount['comics'] || 0;
 
     return (
         <>
@@ -60,27 +63,33 @@ const Profile = () => {
                             <h1 className="text-lg font-semibold">Name : {user?.displayName}</h1>
                             <h2 className="text-lg font-semibold">Email : {user?.email}</h2>
                         </div>
-                        <div className="flex gap-10 flex-col md:flex-row justify-center items-center px-5">
+                        <div className="flex gap-2 flex-col md:flex-row justify-center items-center px-5 mt-8">
                             <div>
-                                <h1 className="text-xl mt-10 md:mt-0 text-center md:text-2xl font-bold text-[#242253]">My Bookshelf Summary :</h1>
-                                <table className="table w-full md:w-[450px] border border-gray-400 mt-3 md:mt-6 table-fixed">
-                                    <thead className="bg-[#242253] text-white">
-                                        <tr className="text-[11px] md:text-sm text-center">
-                                            <th className="border border-gray-300">Total Books</th>
-                                            <th className="border border-gray-300">Fiction</th>
-                                            <th className="border border-gray-300">Non-Fiction</th>
-                                            <th className="border border-gray-300">Fantasy</th>
-                                        </tr>
-                                    </thead>
-                                    <tbody>
-                                        <tr className="text-[#242253] text-[11px] md:text-sm font-bold text-center">
-                                            <td className="border border-gray-300">{totalBooks}</td>
-                                            <td className="border border-gray-300">{fictionCount}</td>
-                                            <td className="border border-gray-300">{nonFictionCount}</td>
-                                            <td className="border border-gray-300">{fantasyCount}</td>
-                                        </tr>
-                                    </tbody>
-                                </table>
+                                <h1 className="text-xl mt-5 md:mt-0 text-center md:text-2xl font-bold text-[#242253]">My Bookshelf Summary :</h1>
+                                <div className="w-full overflow-x-auto">
+                                    <table className="table w-full border border-gray-400 mt-3 md:mt-6 text-center mb-8 md:mb-0">
+                                        <thead className="bg-[#242253] text-white">
+                                            <tr className="text-[11px] md:text-sm">
+                                                <th className="border border-gray-300" colSpan={2}>Total Books Category</th>
+                                            </tr>
+                                        </thead>
+                                        <tbody>
+                                            <tr className="text-[#242253] text-[11px] md:text-sm font-bold">
+                                                <td className="border border-gray-300">Fiction : {fictionCount}</td>
+                                                <td className="border border-gray-300">Non-Fiction : {nonFictionCount}</td>
+                                            </tr>
+                                            <tr className="text-[#242253] text-[11px] md:text-sm font-bold">
+                                                <td className="border border-gray-300">Fantasy : {fantasyCount}</td>
+                                                <td className="border border-gray-300">Historical : {historicalCount}</td>
+                                            </tr>
+                                            <tr className="text-[#242253] text-[11px] md:text-sm font-bold">
+                                                <td className="border border-gray-300">Biography : {biographyCount}</td>
+                                                <td className="border border-gray-300">Comics : {comicsCount}</td>
+                                            </tr>
+                                        </tbody>
+                                    </table>
+                                </div>
+
                             </div>
                             <div className="w-full md:w-[450px]">
                                 <CustomActiveShapePieChart data={chartData} />
