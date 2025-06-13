@@ -1,11 +1,12 @@
-
 import { Link } from "react-router";
+import ZoomInSection from "../Components/ZoomInSection";
 
 const BookCard = ({ book }) => {
 
     const { _id, book_title, cover_photo, total_page, book_author, book_category, book_overview, upvote, name, reading_status } = book
 
     return (
+        <ZoomInSection>
         <div className="card w-full bg-[#f4f3f3] shadow-lg border border-gray-200 hover:shadow-xl transition duration-300">
             <figure className="h-60 flex items-center justify-center bg-[#bfbdff]">
                 <img
@@ -40,6 +41,7 @@ const BookCard = ({ book }) => {
                 </div>
             </div>
         </div>
+        </ZoomInSection>
     );
 };
 

@@ -4,8 +4,13 @@ import { Link } from 'react-router';
 import Swal from 'sweetalert2';
 import axios from 'axios';
 import Loading from '../../Components/Loading';
+import ZoomInSection from "../../Components/ZoomInSection";
 
 const MyBooks = () => {
+
+    useEffect(() => {
+        document.title = "BooksHouse | My-Books";
+    }, [])
 
     const { user, logOut } = useAuth();
     const [loading, setLoading] = useState(true);
@@ -69,6 +74,7 @@ const MyBooks = () => {
 
             {
                 (loading) ? <Loading /> : books.length > 0 ? (<>
+                <ZoomInSection>
                     <h1 className="text-4xl font-bold text-center text-[#242253] mb-6">My Reading Shelf</h1>
                     <div className="overflow-x-auto rounded-box border border-base-content/5 bg-[#f4f3f3]">
                         <table className="table">
@@ -107,6 +113,7 @@ const MyBooks = () => {
                             </tbody>
                         </table>
                     </div>
+                    </ZoomInSection>
                 </>
                 ) : (
                     <>

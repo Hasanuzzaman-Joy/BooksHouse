@@ -1,11 +1,12 @@
-
 import { Link } from "react-router";
+import ZoomInSection from "./ZoomInSection";
 
 const PopularBooks = ({ popularBooks }) => {
 
     return (
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
             {popularBooks.map((book) => (
+                <ZoomInSection>
                 <div
                     key={book._id}
                     className="card w-full bg-[#f4f3f3] shadow-lg border border-gray-200 hover:shadow-xl transition duration-300"
@@ -46,6 +47,7 @@ const PopularBooks = ({ popularBooks }) => {
                         </div>
                     </div>
                 </div>
+                </ZoomInSection>
             ))}
         </div>
 

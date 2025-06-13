@@ -1,4 +1,5 @@
 import { Link } from 'react-router';
+import ZoomInSection from './ZoomInSection';
 
 const CallToAction = () => {
   return (
@@ -10,18 +11,20 @@ const CallToAction = () => {
       }}
     >
 
-      <div className="relative z-10 w-full md:max-w-3xl mx-auto text-center">
-        <h2 className="text-4xl font-bold mb-4 text-white">
-           Track, review, and discover books.
-        </h2>
-        <p className="text-base mb-8 text-white">
-          Track your reading journey, share reviews, and discover popular reads — all in one beautiful digital bookshelf.
-        </p>
-        <Link to='/bookshelf' className="btn bg-[#242253] text-base font-semibold hover:text-[#242253] hover:bg-[#bfbdff] text-white px-8 py-4 transition"
-        >
-          Get Started
-        </Link>
-      </div>
+      <ZoomInSection>
+        <div className="relative z-10 w-full md:max-w-3xl mx-auto text-center">
+          <h2 className="text-4xl font-bold mb-4 text-white">
+            Track, review, and discover books.
+          </h2>
+          <p className="text-base mb-8 text-white">
+            Track your reading journey, share reviews, and discover popular reads — all in one beautiful digital bookshelf.
+          </p>
+          <Link to='/bookshelf' className="btn bg-[#242253] text-base font-semibold hover:text-[#242253] hover:bg-[#bfbdff] text-white px-8 py-4 transition"
+          >
+            Get Started
+          </Link>
+        </div>
+      </ZoomInSection>
     </section>
   );
 };

@@ -83,11 +83,11 @@ const DisplayReview = ({ reviews, setReviews }) => {
                         />
                       </div>
                     </div>
-                    <div className="flex gap-3">
+                    <div className="flex flex-col md:flex-row gap-3">
                       {user?.email === review.reviewerEmail && (
                         <>
                           <button
-                            className="text-[#242253] font-semibold hover:underline text-sm underline cursor-pointer"
+                            className="bg-[#242253] text-white py-1 px-2 rounded font-semibold hover:underline text-sm cursor-pointer"
                             onClick={() =>
                               handleEditableComment(review._id)
                             }
@@ -95,7 +95,7 @@ const DisplayReview = ({ reviews, setReviews }) => {
                             Edit
                           </button>
                           <button
-                            className="text-red-600 font-semibold hover:underline text-sm underline  cursor-pointer"
+                            className="bg-red-600 text-white py-1 px-2 rounded font-semibold hover:underline text-sm  cursor-pointer"
                             onClick={() => handleDelete(review._id)}
                           >
                             Delete

@@ -11,3 +11,8 @@
   outline: none;
   box-shadow: none;
 }
+
+a.active{
+  color: #242253;
+  font-weight: bold;
+}

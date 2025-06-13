@@ -7,12 +7,17 @@ import CallToAction from '../../Components/CallToAction'
 import PopularBooks from "../../Components/PopularBooks";
 import FeaturedCategories from "../../Components/FeaturedCategories";
 import About from "../../Components/About";
+import ZoomInSection from "../../Components/ZoomInSection";
 
 const testimonialData = fetch('/testimonial.json').then(res => res.json());
 const faqData = fetch('/faq.json').then(res => res.json());
 const categoriesData = fetch('/categories.json').then(res => res.json());
 
 const Home = () => {
+
+    useEffect(() => {
+        document.title = "BooksHouse";
+    }, [])
 
     const [popularBooks, setPopularBooks] = useState([]);
     const [isLoading, setIsLoading] = useState(true);
@@ -32,7 +37,11 @@ const Home = () => {
                 <Loading />
             ) : (
                 <>
-                    <Slider />
+                    <ZoomInSection>
+                        <div>
+                            <Slider />
+                        </div>
+                    </ZoomInSection>
                     <About />
                     <div className='w-full mx-auto mt-10 py-8 md:px-0 px-4'>
                         <h1 className='text-4xl text-[#242253] font-bold text-center leading-14 px-4 md:px-0 mb-8'>Most Popular Books Among Readers</h1>
@@ -41,7 +50,7 @@ const Home = () => {
                     <div className='w-full mx-auto py-8 md:px-0 px-4'>
                         <h1 className='text-4xl text-[#242253] font-bold text-center pt-6 leading-14 px-4 md:px-0 mb-8'>Featured Categories</h1>
                         <Suspense fallback={<Loading />}>
-                                <FeaturedCategories categoriesData={categoriesData} />
+                            <FeaturedCategories categoriesData={categoriesData} />
                         </Suspense>
                     </div>
                     <Suspense fallback={<Loading />}>

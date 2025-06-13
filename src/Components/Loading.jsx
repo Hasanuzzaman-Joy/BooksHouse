@@ -6,7 +6,7 @@ const Loading = () => {
       <motion.span
         className="loading loading-ring loading-xl"
         initial={{ scale: 1 }}
-        animate={{ scale: [1, 3, 1] }}
+        animate={{ scale: [1, 4, 1] }}
         transition={{
           duration: 1.2,
           ease: "easeInOut",

@@ -23,10 +23,6 @@ const router = createBrowserRouter([
                 Component: Home
             },
             {
-                path: '/loading',
-                Component: Loading
-            },
-            {
                 path: '/bookshelf',
                 Component: Bookshelf
             },
@@ -80,4 +76,4 @@ const router = createBrowserRouter([
     }
 ])
 
-export default router
+export default router;

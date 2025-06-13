@@ -11,7 +11,7 @@ import { Bounce, toast, ToastContainer } from "react-toastify";
 const BookDetails = () => {
 
     useEffect(() => {
-        document.title = "BooksHouse | Details";
+        document.title = "BooksHouse | Book-Details";
     }, [])
 
     const { user, err, setErr } = useAuth();
@@ -137,23 +137,23 @@ const BookDetails = () => {
         <div className='w-full md:w-11/12 mx-auto py-10 px-4 md:px-0'>
             <ToastContainer />
             <div className="bg-[#f4f3f3] mx-auto rounded-xl shadow-lg overflow-hidden md:flex">
-                <figure className="w-full md:w-1/2 object-cover h-120 flex items-center justify-center bg-[#bfbdff]">
+                <figure className="w-full md:w-1/2 object-cover h-130 flex items-center justify-center bg-[#bfbdff]">
                     <img
                         src={cover_photo}
                         alt={book_title}
                         className="max-h-full max-w-full object-contain py-3"
                     />
                 </figure>
-                <div className="px-6 flex flex-col justify-center md:w-1/2 space-y-4">
+                <div className="px-6 flex flex-col justify-center md:w-2/3 space-y-4">
                     <h2 className="text-3xl font-bold text-[#242253] text-center mt-8 md:mt-0">{book_title}</h2>
                     <p className="text-gray-600 mb-5 text-base text-center">{book_overview}</p>
 
-                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base text-gray-700 justify-items-center w-full">
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base text-gray-700 w-full">
                         <div>
                             <span className="font-semibold text-[#242253]">Category:</span> {book_category}
                         </div>
-                        <div>
-                            <span className="font-semibold text-[#242253]">Reading Status:</span> {read}
+                        <div className="font-bold">
+                            <span className="font-semibold text-[#242253]">Total Upvote:</span> {upvoted.length}
                         </div>
                         <div>
                             <span className="font-semibold text-[#242253]">Author:</span> {book_author}
@@ -164,19 +164,43 @@ const BookDetails = () => {
                         <div>
                             <span className="font-semibold text-[#242253]">Added By:</span> {name}
                         </div>
-                        <div className="font-bold">
-                            <span className="font-semibold text-[#242253]">Total Upvote:</span> {upvoted.length}
-                        </div>
                         <div>
                             <span className="font-semibold text-[#242253]">Email:</span> {email}
                         </div>
+                        <div>
+                            <span className="font-semibold text-[#242253]">Reading Status:</span> {read}
+                        </div>
+                        <div>
+                            {
+                                email === user?.email ? <>
+                                    <h1 className="font-semibold text-[#242253] mb-2">
+                                        Update the reading status :
+                                    </h1>
+                                    <div className="space-y-2">
+                                        <select
+                                            onChange={(e) => handleReadingUpdate(e, _id)}
+                                            value={read}
+                                            name="reading_status"
+                                            id="reading_status"
+                                            className="w-full px-3 py-2 rounded-md border border-gray-300 bg-gray-50 text-gray-800 focus:border-gray-600 -ml-1 md:mr-10"
+                                            required
+                                        >
+                                            <option value="" disabled>Select your current reading status</option>
+                                            <option value="Want-to-Read" disabled={read !== "Want-to-Read"}>Want-to-Read</option>
+                                            <option value="Reading" disabled={read !== "Want-to-Read"}>Reading</option>
+                                            <option value="Read" disabled={read !== "Reading"}>Read</option>
+                                        </select>
+                                    </div>
+                                </> : <></>
+                            }
+                        </div>
                     </div>
 
-                    <div className="flex justify-center items-center pt-4">
+                    <div className="flex justify-center items-center pt-10">
                         <button
                             onClick={() => handleUpvote(_id, user?.email)}
                             disabled={!user?.email}
-                            className={`btn w-full md:w-[50%] transition-all text-base pb-[2px] mb-8 md:mb-0
+                            className={`btn w-full md:w-[70%] transition-all text-base pb-[2px] mb-8 md:mb-0
       ${user?.email
                                     ? "bg-[#242253] hover:bg-[#bfbdff] hover:text-[#242253] text-white"
                                     : "bg-gray-400 cursor-not-allowed text-gray-700"}`}
@@ -186,57 +210,41 @@ const BookDetails = () => {
                     </div>
                 </div>
             </div>
-
-            <div className="w-full md:w-[70%] pt-10">
-                {
-                    email === user?.email ? <>
+            {
+                user?.email ? <>
+                    <div className="w-full md:w-[70%] pt-10">
                         <h1 className="text-2xl font-bold text-[#242253] mb-2">
-                            Update the reading status :
+                            Write a Review for This Book
                         </h1>
-                        <div className="space-y-2 mb-5">
-                            <select
-                                onChange={(e) => handleReadingUpdate(e, _id)}
-                                value={read}
-                                name="reading_status"
-                                id="reading_status"
-                                className="w-full px-3 py-2 rounded-md border border-gray-300 bg-gray-50 text-gray-800 focus:border-gray-600"
-                                required
-                            >
-                                <option value="" disabled>Select your current reading status</option>
-                                <option value="Want-to-Read" disabled={read !== "Want-to-Read"}>Want-to-Read</option>
-                                <option value="Reading" disabled={read !== "Want-to-Read"}>Reading</option>
-                                <option value="Read" disabled={read !== "Reading"}>Read</option>
-                            </select>
-                        </div>
-                    </> : <></>
-                }
+                        <textarea
+                            value={comment}
+                            onChange={(e) => { setComment(e.target.value) }}
+                            name="book_review"
+                            id="book_review"
+                            rows="7"
+                            placeholder="Share your thoughts, opinions, or feedback about the book..."
+                            className="w-full px-3 py-2 rounded-md border border-gray-300 bg-gray-50 text-gray-800 focus:border-gray-600 resize-none"
+                        ></textarea>
+                        {err && <p className='text-sm' style={{ color: 'red' }}>{err}</p>}
+                    </div>
+                    <div className="my-4 flex gap-1 items-center">
+                        <h1 className="text-xl font-bold">Ratings :</h1>
+                        <Rating handleRatingChange={handleRatingChange} rating={rating} />
+                    </div>
+                    <button
+                        onClick={() => handleReview(_id)}
+                        disabled={hasReviewed}
+                        type="submit"
+                        className="w-[300px] px-8 py-2 mt-2 font-semibold rounded-md bg-[#242253] hover:bg-[#bfbdff] text-white hover:text-[#242253] border border-transparent cursor-pointer transition-all disabled:cursor-not-allowed"
+                    >
+                        Submit Review
+                    </button>
+                </>
+                    :
+                    " "
+            }
 
-                <h1 className="text-2xl font-bold text-[#242253] mb-2">
-                    Write a Review for This Book
-                </h1>
-                <textarea
-                    value={comment}
-                    onChange={(e) => { setComment(e.target.value) }}
-                    name="book_review"
-                    id="book_review"
-                    rows="7"
-                    placeholder="Share your thoughts, opinions, or feedback about the book..."
-                    className="w-full px-3 py-2 rounded-md border border-gray-300 bg-gray-50 text-gray-800 focus:border-gray-600 resize-none"
-                ></textarea>
-                {err && <p className='text-sm' style={{ color: 'red' }}>{err}</p>}
-            </div>
-            <div className="my-4 flex gap-1 items-center">
-                <h1 className="text-xl font-bold">Ratings :</h1>
-                <Rating handleRatingChange={handleRatingChange} rating={rating} />
-            </div>
-            <button
-                onClick={() => handleReview(_id)}
-                disabled={hasReviewed}
-                type="submit"
-                className="w-[300px] px-8 py-2 mt-2 font-semibold rounded-md bg-[#242253] hover:bg-[#bfbdff] text-white hover:text-[#242253] border border-transparent cursor-pointer transition-all disabled:cursor-not-allowed"
-            >
-                Submit Review
-            </button>
+
 
             <Suspense fallback={<Loading />}>
                 <DisplayReview reviews={reviews} setReviews={setReviews} />

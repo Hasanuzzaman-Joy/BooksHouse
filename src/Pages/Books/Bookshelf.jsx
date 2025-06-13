@@ -1,10 +1,14 @@
-
+import ZoomInSection from "../../Components/ZoomInSection";
 import BookCard from "../../Components/BookCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "../../Components/Loading";
 
 const Bookshelf = () => {
+
+    useEffect(() => {
+        document.title = "BooksHouse | Bookshelf";
+    }, [])
 
     const [filteredStatus, setFilteredStatus] = useState('');
     const [searchParams, setSearchParams] = useState('');
@@ -29,6 +33,7 @@ const Bookshelf = () => {
                 loading ? <Loading /> :
                     (
                         <div className="w-full md:w-11/12 mx-auto py-7">
+                            <ZoomInSection>
                             <div className="flex flex-col mb-3">
                                 <h1 className="text-4xl font-bold text-center text-[#242253] mb-2 md:px-0 px-4">
                                     Explore the Library
@@ -74,6 +79,7 @@ const Bookshelf = () => {
                                 </div>
 
                             </div>
+                            </ZoomInSection>
 
                             <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5 md:px-0 px-4">
                                 {

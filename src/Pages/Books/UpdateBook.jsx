@@ -3,8 +3,14 @@ import useAuth from '../../Hooks/useAuth'
 import { IoBookSharp } from "react-icons/io5";
 import Swal from 'sweetalert2';
 import { useLoaderData, useNavigate } from 'react-router';
+import { useEffect } from 'react';
+import ZoomInSection from "../../Components/ZoomInSection";
 
 const UpdateBook = () => {
+
+    useEffect(() => {
+        document.title = "BooksHouse | Update-Book";
+    }, [])
 
     const { user } = useAuth();
     const navigate = useNavigate();
@@ -46,6 +52,7 @@ const UpdateBook = () => {
 
     return (
         <div className=' bg-[#f4f3f3] w-full md:w-11/12 mx-auto py-10 px-4'>
+            <ZoomInSection>
             <div className="max-w-[96%] md:max-w-[800px] mx-auto bg-base-100 p-4 rounded-md sm:p-8 shadow-xl" style={{
                 boxShadow:
                     'rgba(50, 50, 93, 0.25) 0px 6px 12px -2px, rgba(0, 0, 0, 0.3) 0px 3px 7px -3px',
@@ -133,6 +140,7 @@ const UpdateBook = () => {
                     </button>
                 </form>
             </div>
+            </ZoomInSection>
         </div>
     );
 };

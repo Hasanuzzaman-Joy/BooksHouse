@@ -1,15 +1,17 @@
 
-import { NavLink, Link } from 'react-router';
-import { MdOutlineWbSunny } from "react-icons/md";
-import { PiMoonStarsFill } from "react-icons/pi";
+import { NavLink, Link, useNavigate } from 'react-router';
 import useAuth from '../Hooks/useAuth';
 
 const Navbar = () => {
 
     const { user, logOut } = useAuth();
+    const navigate = useNavigate();
 
     const logOutForm = () => {
         logOut()
+        .then(() =>{
+            navigate('/login')
+        })
     }
 
     const link = (
