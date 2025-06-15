@@ -49,8 +49,10 @@ const UpdateBook = () => {
         const form = e.target;
         const formData = new FormData(form);
         const allData = Object.fromEntries(formData);
+        const {upvote, ...restData} = allData;
+        const allNewData = {...restData}
 
-        axios.patch(`${import.meta.env.VITE_SERVER_URL}/update-book/${book._id}`, allData,
+        axios.patch(`${import.meta.env.VITE_SERVER_URL}/update-book/${book._id}`, allNewData,
             {
                 headers: {
                     Authorization: `Bearer ${user.accessToken}`
