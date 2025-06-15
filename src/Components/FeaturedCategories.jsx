@@ -10,9 +10,8 @@ export default function FeaturedCategories({ categoriesData }) {
         <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
             {
                 categories.map(category =>
-                    <ZoomInSection>
+                    <ZoomInSection key={category.id}>
                     <div
-                        key={category.id}
                         className="card w-full bg-[#f4f3f3] shadow-lg border border-gray-200 hover:shadow-xl transition duration-300"
                     >
                         <div className="card-body flex flex-col items-center text-center">
@@ -32,10 +31,10 @@ export default function FeaturedCategories({ categoriesData }) {
 
                             <div className="card-actions mt-4 justify-center">
                                 <Link
-                                    to={`/bookshelf`}
+                                    to={`/categories/${category.name}`}
                                     className="btn bg-[#242253] text-white hover:bg-[#bfbdff] hover:text-[#242253] transition-all"
                                 >
-                                    Explore All
+                                   Browse {category.name}
                                 </Link>
                             </div>
                         </div>

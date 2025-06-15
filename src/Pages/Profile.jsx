@@ -11,7 +11,7 @@ const Profile = () => {
         document.title = "BooksHouse | Profile";
     }, [])
 
-    const { user } = useAuth();
+    const { user, logOut } = useAuth();
     const [books, setBooks] = useState([]);
     const [loading, setLoading] = useState(true);
 
@@ -25,7 +25,15 @@ const Profile = () => {
                 setBooks(res.data)
                 setLoading(false)
             })
-    }, [user])
+            .catch(err => {
+                if (err?.status === 401 || err?.status === 403) {
+                    logOut()
+                        .then(() => {
+                            console.log('Signed Out')
+                        })
+                }
+            })
+    }, [user, logOut])
 
 
     // Count categories

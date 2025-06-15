@@ -27,7 +27,6 @@ const MyBooks = () => {
                 setLoading(false);
             })
             .catch(err => {
-                console.log(err);
                 if (err?.status === 401 || err?.status === 403) {
                     logOut()
                         .then(() => {

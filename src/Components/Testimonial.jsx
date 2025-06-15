@@ -9,8 +9,8 @@ const Testimonial = ({ testimonialData }) => {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 w-full mx-auto px-4 md:px-7 py-10">
             {
                 testimonial.map(test => (
-                    <ZoomInSection>
-                        <div key={test.id} className="flex flex-col w-full max-w-lg p-1 mx-auto divide-y divide-gray-300 rounded-md shadow bg-white">
+                    <ZoomInSection key={test.id}>
+                        <div className="flex flex-col w-full max-w-lg p-1 mx-auto divide-y divide-gray-300 rounded-md shadow bg-white">
                             <div className="flex justify-between p-4">
                                 <div className="flex space-x-4">
                                     <div>
