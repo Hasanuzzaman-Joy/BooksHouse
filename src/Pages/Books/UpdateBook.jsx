@@ -50,7 +50,7 @@ const UpdateBook = () => {
         const formData = new FormData(form);
         const allData = Object.fromEntries(formData);
         const {upvote, ...restData} = allData;
-        const allNewData = {...restData}
+        const allNewData = {...restData};
 
         axios.patch(`${import.meta.env.VITE_SERVER_URL}/update-book/${book._id}`, allNewData,
             {
