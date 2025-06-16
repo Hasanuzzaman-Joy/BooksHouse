@@ -14,7 +14,7 @@ const Login = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const [showPassword, setShowPassword] = useState(false);
-    const { login, googleSign, setErr, err  } = useAuth();
+    const { login, googleSign, setErr, err, setLoading } = useAuth();
 
     const handleGoogle = () => {
         googleSign()
@@ -46,10 +46,11 @@ const Login = () => {
                     theme: "light",
                     transition: Bounce,
                 });
+                setLoading(false);
             })
     }
 
-    const hanedleLogin = (e) => {
+    const handleLogin = (e) => {
         e.preventDefault();
 
         const form = e.target;
@@ -86,6 +87,7 @@ const Login = () => {
                     theme: "light",
                     transition: Bounce
                 });
+                setLoading(false);
             })
     }
 
@@ -108,7 +110,7 @@ const Login = () => {
                     <p className="px-3">OR</p>
                     <hr className="w-full" />
                 </div>
-                <form className="space-y-8" onSubmit={hanedleLogin}>
+                <form className="space-y-8" onSubmit={handleLogin}>
                     <div className="space-y-4">
                         {err && <p className='text-sm' style={{ color: 'red' }}>{err}</p>}
                         <div className="space-y-2">

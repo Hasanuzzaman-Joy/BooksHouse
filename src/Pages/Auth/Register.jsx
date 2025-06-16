@@ -11,7 +11,7 @@ const Register = () => {
     }, [])
 
     const navigate = useNavigate();
-    const { register, updatedProfile, googleSign } = useAuth();
+    const { register, updatedProfile, googleSign,setLoading } = useAuth();
 
     const handleGoogle = () => {
         googleSign
@@ -44,6 +44,7 @@ const Register = () => {
                     theme: "light",
                     transition: Bounce,
                 });
+                setLoading(false);
             })
     }
 
@@ -131,6 +132,7 @@ const Register = () => {
                     theme: "light",
                     transition: Bounce
                 });
+                setLoading(false);
             })
     }
 

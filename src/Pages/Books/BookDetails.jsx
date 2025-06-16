@@ -138,7 +138,7 @@ const BookDetails = () => {
             case "Want-to-Read":
                 return 10;
             case "Reading":
-                return 70;
+                return 50;
             case "Read":
                 return 100;
             default:
@@ -183,12 +183,12 @@ const BookDetails = () => {
                         <div>
                             <span className="font-semibold text-[#242253]">Reading Status:</span> {read}
                             <div className="w-full mt-3">
-                                <div className="w-full md:w-[250px] bg-gray-200 rounded-full h-3 overflow-hidden">
+                                <div className=" w-3/4 bg-gray-200 rounded-full h-3 overflow-hidden">
                                     <div
                                         className={`h-full transition-all duration-500 ${getProgressValue(read) === 100
                                             ? "bg-green-500"
                                             : getProgressValue(read) === 50
-                                                ? "bg-yellow-500"
+                                                ? "bg-[#242253]"
                                                 : "bg-[#242253]"
                                             }`}
                                         style={{ width: `${getProgressValue(read)}%` }}

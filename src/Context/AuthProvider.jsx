@@ -16,10 +16,12 @@ const AuthProvider = ({ children }) => {
     }
 
     const updatedProfile = (name, photo) => {
-        setLoading(true);
         return updateProfile(auth.currentUser, {
             displayName: name, photoURL: photo
         })
+            .then(() => {
+                setUser({ ...auth.currentUser });
+            })
     }
 
     const googleSign = () => {
@@ -36,11 +38,10 @@ const AuthProvider = ({ children }) => {
         return signOut(auth);
     }
 
-    
     useEffect(() => {
         const unsubscribe = onAuthStateChanged(auth, (userCredentials) => {
-                setUser(userCredentials);
-                setLoading(false);
+            setUser(userCredentials);
+            setLoading(false);
         })
 
         return () => unsubscribe();
