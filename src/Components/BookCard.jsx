@@ -26,7 +26,7 @@ const BookCard = ({ book }) => {
                     <p className="text-[#242253]"><span className="font-semibold">Total Pages:</span> {total_page}</p>
                     <p className="text-[#242253]"><span className="font-semibold">Author:</span> {book_author}</p>
                     <p className="text-[#242253]"><span className="font-semibold">Category:</span> {book_category}</p>
-                    <p className="text-[#242253]"><span className="font-semibold">read:</span> {reading_status}</p>
+                    <p className="text-[#242253]"><span className="font-semibold">Reading Status:</span> {reading_status}</p>
                 </div>
 
                 <div className="text-sm text-gray-500">
