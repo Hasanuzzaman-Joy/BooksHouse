@@ -44,7 +44,7 @@ const Bookshelf = () => {
                                 <div className="flex flex-col items-center gap-4 mb-6">
 
                                     {/* Search Input */}
-                                    <div className="flex items-center gap-2 w-3/4 max-w-md mx-auto md:px-0 px-4">
+                                    <div className="flex items-center gap-2 w-full max-w-md mx-auto md:px-0 px-4">
                                         <label htmlFor="book_search" className="text-sm font-semibold text-gray-700 whitespace-nowrap">
                                             Search:
                                         </label>
@@ -60,7 +60,7 @@ const Bookshelf = () => {
                                     </div>
 
                                     {/* Sort Dropdown */}
-                                    <div className="flex items-center gap-2 w-3/4 max-w-md mx-auto md:px-0 px-4">
+                                    <div className="flex items-center gap-2 w-full max-w-md mx-auto md:px-0 px-4">
                                         <label htmlFor="reading_status" className="text-sm font-semibold text-gray-700 whitespace-nowrap">
                                             Sort by:
                                         </label>
