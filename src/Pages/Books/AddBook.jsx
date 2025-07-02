@@ -58,7 +58,7 @@ const AddBook = () => {
     }
 
     return (
-        <div className='bg-[#f4f3f3] w-full md:w-11/12 mx-auto py-10 px-4'>
+        <div className='bg-[#f4f3f3] w-full mx-auto py-10 px-4'>
             <ToastContainer />
             <ZoomInSection>
                 <div className="max-w-[96%] md:max-w-[800px] mx-auto bg-base-100 p-4 rounded-md sm:p-8 shadow-xl" style={{

@@ -12,7 +12,7 @@ const CallToAction = () => {
     >
 
       <ZoomInSection>
-        <div className="relative z-10 w-full md:max-w-3xl mx-auto text-center">
+        <div className="relative z-10 w-full md:w-11/12 mx-auto text-center">
           <h2 className="text-4xl font-bold mb-4 text-white">
             Track, review, and discover books.
           </h2>

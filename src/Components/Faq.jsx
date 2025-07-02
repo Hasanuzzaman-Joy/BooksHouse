@@ -6,7 +6,7 @@ const Faq = ({ faqData }) => {
     const faqs = use(faqData);
 
     return (
-        <div className='w-full md:px-0 px-4 pt-10 pb-2'>
+        <div className='w-full md:w-11/12 mx-auto md:px-0 px-4 pt-10 pb-2'>
             <h1 className='text-4xl font-bold text-center py-5 leading-14 text-[#242253]'>Frequently Asked Questions (FAQs)</h1>
             {faqs.map((faq, index) => (
                 <ZoomInSection key={index}>

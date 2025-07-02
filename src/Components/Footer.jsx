@@ -5,7 +5,7 @@ import { Link } from "react-router";
 const Footer = () => {
     return (
         <>
-            <div className="footer grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 bg-[#bfbdff] text-base-content py-10 px-5 md:py-16 md:px-10 w-full md:w-11/12 mx-auto">
+            <div className="footer grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-base-content py-10 px-5 md:py-16 md:px-10 w-full md:w-11/12 mx-auto">
                 <aside className="flex flex-row justify-center items-center">
                     <img src="/logo.png" alt="" className="w-14"/>
                     <h1 className='text-[#242253] font-bold text-base md:text-xl -ml-[2px]'>Books<span className='text-[#faf34a]'>House</span></h1>
@@ -62,7 +62,7 @@ const Footer = () => {
                     </div>
                 </nav>
             </div>
-            <div className="footer sm:footer-horizontal footer-center  bg-[#242253] text-base-content w-full md:w-11/12 mx-auto p-4">
+            <div className="footer sm:footer-horizontal footer-center  bg-[#242253] text-base-content w-full mx-auto p-4">
                 <aside>
                     <p className="text-white">Copyright © {new Date().getFullYear()} - All right reserved by <strong>BooksHouse</strong></p>
                 </aside>

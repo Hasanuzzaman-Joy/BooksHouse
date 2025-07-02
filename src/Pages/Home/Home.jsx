@@ -32,7 +32,7 @@ const Home = () => {
     }, []);
 
     return (
-        <div className=" w-full md:w-11/12 mx-auto">
+        <div className=" w-full mx-auto">
             {isLoading ? (
                 <Loading />
             ) : (

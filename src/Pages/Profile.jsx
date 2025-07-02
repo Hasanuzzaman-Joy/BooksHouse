@@ -66,7 +66,7 @@ const Profile = () => {
         <>
             {
                 loading ? <Loading /> :
-                    <div className="w-full md:w-11/12 bg-[#f4f3f3] mx-auto py-7">
+                    <div className="w-full bg-[#f4f3f3] mx-auto py-7">
                         <ZoomInSection>
                             <div className="flex justify-self-center avatar avatar-online mt-10">
                                 <div className="w-32 rounded-full">
