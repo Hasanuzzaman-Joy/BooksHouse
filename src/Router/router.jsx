@@ -13,6 +13,8 @@ import UpdateBook from "../Pages/Books/UpdateBook"
 import Loading from "../Components/Loading"
 import BookDetails from "../Pages/Books/BookDetails"
 import CategoryBooks from "../Pages/Books/CategoryBooks"
+import DashboardLayouts from "../Layouts/DashboardLayouts"
+import Contact from "../Pages/Auth/Contact"
 
 const router = createBrowserRouter([
     {
@@ -35,38 +37,6 @@ const router = createBrowserRouter([
                 errorElement: <Error />
             },
             {
-                path: '/my-books',
-                element: <PrivateRoute>
-                    <MyBooks />
-                </PrivateRoute>
-            },
-            {
-                path: '/add-book',
-                element: <PrivateRoute>
-                    <AddBook />
-                </PrivateRoute>
-            },
-            {
-                path: '/update-book/:id',
-                element: <PrivateRoute>
-                    <UpdateBook />
-                </PrivateRoute>,
-                errorElement: <Error />
-            },
-            {
-                path: '/book-details/:id',
-                loader: ({ params }) => fetch(`${import.meta.env.VITE_SERVER_URL}/book/${params.id}`),
-                element: <BookDetails />,
-                hydrateFallbackElement: <Loading />,
-                errorElement: <Error />
-            },
-            {
-                path: '/profile',
-                element: <PrivateRoute>
-                    <Profile />
-                </PrivateRoute>
-            },
-            {
                 path: '/login',
                 Component: Login
             },
@@ -75,7 +45,53 @@ const router = createBrowserRouter([
                 Component: Register
             },
             {
+                path: '/contact',
+                Component: Contact
+            },
+            {
                 path: "*",
+                Component: Error
+            }
+        ]
+    },
+    {
+        path: '/dashboard',
+        Component: DashboardLayouts,
+        children: [
+            {
+                path: 'my-books',
+                element: <PrivateRoute>
+                    <MyBooks />
+                </PrivateRoute>
+            },
+            {
+                path: 'add-book',
+                element: <PrivateRoute>
+                    <AddBook />
+                </PrivateRoute>
+            },
+            {
+                path: 'update-book/:id',
+                element: <PrivateRoute>
+                    <UpdateBook />
+                </PrivateRoute>,
+                errorElement: <Error />
+            },
+            {
+                path: 'book-details/:id',
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_SERVER_URL}/book/${params.id}`),
+                element: <BookDetails />,
+                hydrateFallbackElement: <Loading />,
+                errorElement: <Error />
+            },
+            {
+                path: 'profile',
+                element: <PrivateRoute>
+                    <Profile />
+                </PrivateRoute>
+            },
+            {
+                path: '*',
                 Component: Error
             }
         ]

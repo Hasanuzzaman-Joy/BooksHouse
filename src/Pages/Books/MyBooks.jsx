@@ -94,7 +94,6 @@ const MyBooks = () => {
                                         <th>Category</th>
                                         <th>Reading Status</th>
                                         <th>Total Upvote</th>
-                                        <th>Submitted By</th>
                                         <th>Actions</th>
                                     </tr>
                                 </thead>
@@ -104,15 +103,14 @@ const MyBooks = () => {
                                             <tr className="text-[#242253] text-sm font-medium" key={book._id}>
                                                 <th>{index + 1}</th>
                                                 <td>
-                                                    <img src={book.cover_photo} alt="" className="w-8 rounded" />
+                                                    <img src={book.cover_photo} alt="" className="w-8" />
                                                 </td>
                                                 <td>{book.book_title}</td>
                                                 <td>{book.book_category}</td>
                                                 <td>{book.reading_status}</td>
                                                 <td>{book.upvote.length}</td>
-                                                <td>{book.name}</td>
                                                 <td className="flex gap-2">
-                                                    <Link to={`/update-book/${book._id}`} className='btn bg-[#bfbdff] hover:bg-[#242253] transition-all text-[#242253] hover:text-white md:px-8'>Update</Link>
+                                                    <Link to={`/dashboard/update-book/${book._id}`} className='btn bg-[#bfbdff] hover:bg-[#242253] transition-all text-[#242253] hover:text-white md:px-8'>Update</Link>
                                                     <button className='btn bg-[#242253] hover:bg-[#bfbdff] transition-all text-white hover:text-[#242253] md:px-8' onClick={() => handleDelete(book._id)}>Delete</button>
                                                 </td>
                                             </tr>

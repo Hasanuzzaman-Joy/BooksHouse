@@ -16,7 +16,11 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/"
-          className="px-4 py-2 hover:bg-[#bfbdff] hover:text-[#242253] text-base font-semibold rounded-md"
+          className={({ isActive }) =>
+            `px-4 py-2 text-base font-semibold rounded-md ${
+              isActive ? "bg-[#bfbdff] text-[#242253]" : "hover:bg-[#bfbdff] hover:text-[#242253]"
+            }`
+          }
         >
           Home
         </NavLink>
@@ -24,42 +28,52 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/bookshelf"
-          className="px-4 py-2 hover:bg-[#bfbdff] hover:text-[#242253] text-base font-semibold rounded-md"
+          className={({ isActive }) =>
+            `px-4 py-2 text-base font-semibold rounded-md ${
+              isActive ? "bg-[#bfbdff] text-[#242253]" : "hover:bg-[#bfbdff] hover:text-[#242253]"
+            }`
+          }
         >
           Bookshelf
         </NavLink>
-      </li>
-      <li>
+      </li><li>
         <NavLink
-          to="/add-book"
-          className="px-4 py-2 hover:bg-[#bfbdff] hover:text-[#242253] text-base font-semibold rounded-md"
+          to="/contact"
+          className={({ isActive }) =>
+            `px-4 py-2 text-base font-semibold rounded-md ${
+              isActive ? "bg-[#bfbdff] text-[#242253]" : "hover:bg-[#bfbdff] hover:text-[#242253]"
+            }`
+          }
         >
-          Add Book
+          Contact
         </NavLink>
       </li>
-      <li>
-        <NavLink
-          to="/my-books"
-          className="px-4 py-2 hover:bg-[#bfbdff] hover:text-[#242253] text-base font-semibold rounded-md"
-        >
-          My Books
-        </NavLink>
-      </li>
-      <li>
-        <NavLink
-          to="/profile"
-          className="px-4 py-2 hover:bg-[#bfbdff] hover:text-[#242253] text-base font-semibold rounded-md"
-        >
-          Profile
-        </NavLink>
-      </li>
+
+      {user && (
+        <li>
+          <NavLink
+            to="/dashboard/my-books"
+            className={({ isActive }) =>
+              `px-4 py-2 text-base font-semibold rounded-md ${
+                isActive ? "bg-[#bfbdff] text-[#242253]" : "hover:bg-[#bfbdff] hover:text-[#242253]"
+              }`
+            }
+          >
+            Dashboard
+          </NavLink>
+        </li>
+      )}
 
       {!user && (
         <>
           <li>
             <NavLink
               to="/login"
-              className="px-4 py-2 hover:bg-[#bfbdff] hover:text-[#242253] text-base font-semibold rounded-md md:hidden"
+              className={({ isActive }) =>
+                `px-4 py-2 text-base font-semibold rounded-md md:hidden ${
+                  isActive ? "bg-[#bfbdff] text-[#242253]" : "hover:bg-[#bfbdff] hover:text-[#242253]"
+                }`
+              }
             >
               Login
             </NavLink>
@@ -67,7 +81,11 @@ const Navbar = () => {
           <li>
             <NavLink
               to="/register"
-              className="px-4 py-2 hover:bg-[#bfbdff] hover:text-[#242253] text-base font-semibold rounded-md md:hidden"
+              className={({ isActive }) =>
+                `px-4 py-2 text-base font-semibold rounded-md md:hidden ${
+                  isActive ? "bg-[#bfbdff] text-[#242253]" : "hover:bg-[#bfbdff] hover:text-[#242253]"
+                }`
+              }
             >
               Register
             </NavLink>
@@ -82,12 +100,9 @@ const Navbar = () => {
       <div className="w-full bg-white border-b-[0.5px] border-[#dbdbdb]">
         <div className="navbar w-full md:w-11/12 mx-auto">
           <div className="navbar-start">
+            {/* Mobile Dropdown */}
             <div className="dropdown">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost lg:hidden -ml-3"
-              >
+              <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden -ml-3">
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -95,13 +110,7 @@ const Navbar = () => {
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
-                  {" "}
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h8m-8 6h16"
-                  />{" "}
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
                 </svg>
               </div>
               <ul
@@ -111,24 +120,29 @@ const Navbar = () => {
                 {link}
               </ul>
             </div>
+
+            {/* Logo */}
             <div className="flex justify-center items-center -ml-2 md:ml-0">
               <img src="/logo.png" className="w-8" alt="logo" />
               <h1 className="text-[#242253] font-bold text-base md:text-2xl -ml-[2px]">
-                Books<span className="text-[#faf34a] ">House</span>
+                Books<span className="text-[#faf34a]">House</span>
               </h1>
             </div>
           </div>
+
+          {/* Desktop Links */}
           <div className="navbar-center hidden lg:flex">
             <ul className="menu menu-horizontal px-1">{link}</ul>
           </div>
 
+          {/* User Avatar / Auth Buttons */}
           {user ? (
             <div className="navbar-end flex gap-4">
               <div className="dropdown dropdown-left dropdown-bottom">
                 <div tabIndex={0}>
                   <div className="avatar avatar-online cursor-pointer">
                     <div className="w-10 rounded-full dark:border-[1px] dark:border-white">
-                      <img src={user.photoURL} />
+                      <img src={user.photoURL} alt="User" />
                     </div>
                   </div>
                 </div>
