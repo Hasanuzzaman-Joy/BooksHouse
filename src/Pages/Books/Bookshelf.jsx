@@ -3,6 +3,7 @@ import BookCard from "../../Components/BookCard";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import Loading from "../../Components/Loading";
+import Container from "../../Components/Container";
 
 const Bookshelf = () => {
 
@@ -32,7 +33,7 @@ const Bookshelf = () => {
             {
                 loading ? <Loading /> :
                     (
-                        <div className="w-full md:w-11/12 mx-auto py-7">
+                        <Container>
                             <ZoomInSection>
                             <div className="flex flex-col mb-3">
                                 <h1 className="text-4xl font-bold text-center text-[#242253] mb-2 md:px-0 px-4">
@@ -86,7 +87,7 @@ const Bookshelf = () => {
                                     books.map(book => <BookCard key={book._id} book={book} />)
                                 }
                             </div>
-                        </div>
+                        </Container>
                     )
             }
         </>

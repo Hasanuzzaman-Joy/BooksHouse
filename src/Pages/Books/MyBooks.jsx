@@ -5,6 +5,7 @@ import Swal from 'sweetalert2';
 import axios from 'axios';
 import Loading from '../../Components/Loading';
 import ZoomInSection from "../../Components/ZoomInSection";
+import Container from '../../Components/Container';
 
 const MyBooks = () => {
 
@@ -78,7 +79,7 @@ const MyBooks = () => {
     };
 
     return (
-        <div className='w-full md:w-11/12 mx-auto py-10 md:px-0 px-4'>
+        <Container>
 
             {
                 (loading) ? <Loading /> : books.length > 0 ? (<>
@@ -131,7 +132,7 @@ const MyBooks = () => {
                     </>
                 )
             }
-        </div>
+        </Container>
     );
 };
 

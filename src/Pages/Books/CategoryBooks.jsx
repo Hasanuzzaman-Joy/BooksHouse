@@ -2,6 +2,7 @@ import { useLoaderData, useParams } from "react-router";
 import { Link } from "react-router";
 import ZoomInSection from '../../Components/ZoomInSection';
 import { useEffect } from "react";
+import Container from "../../Components/Container";
 
 const CategoryBooks = () => {
 
@@ -13,7 +14,7 @@ const CategoryBooks = () => {
     const { category } = useParams();
 
     return (
-        <div className="w-full md:w-11/12 mx-auto py-7">
+        <Container>
             <h1 className='text-4xl text-[#242253] font-bold text-center pb-7 leading-14 px-4 md:px-0'>Explore {category} Books</h1>
             <div className="grid md:grid-cols-2 grid-cols-1 gap-8 ">
                 {
@@ -55,7 +56,7 @@ const CategoryBooks = () => {
                     )
                 }
             </div>
-        </div>
+        </Container>
     );
 };
 

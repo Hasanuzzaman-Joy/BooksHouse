@@ -1,7 +1,7 @@
-import { use } from 'react';
-import StarRatings from 'react-star-ratings';
-import ZoomInSection from '../Components/ZoomInSection'
-import Container from './Container';
+import { use } from "react";
+import StarRatings from "react-star-ratings";
+import ZoomInSection from "../Components/ZoomInSection";
+import Container from "../Components/Container";
 
 const Testimonial = ({ testimonialData }) => {
     const testimonial = use(testimonialData);
@@ -12,7 +12,7 @@ const Testimonial = ({ testimonialData }) => {
                 {
                     testimonial.map(test => (
                         <ZoomInSection key={test.id}>
-                            <div className="flex flex-col w-full max-w-lg p-1 mx-auto divide-y divide-gray-300 rounded-md shadow bg-white">
+                            <div className="flex flex-col w-full p-1 mx-auto divide-y divide-gray-300 rounded-md shadow bg-white">
                                 <div className="flex justify-between p-4">
                                     <div className="flex space-x-4">
                                         <div>
