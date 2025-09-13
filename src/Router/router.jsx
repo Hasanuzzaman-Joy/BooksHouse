@@ -37,6 +37,13 @@ const router = createBrowserRouter([
                 errorElement: <Error />
             },
             {
+                path: 'book-details/:id',
+                loader: ({ params }) => fetch(`${import.meta.env.VITE_SERVER_URL}/book/${params.id}`),
+                element: <BookDetails />,
+                hydrateFallbackElement: <Loading />,
+                errorElement: <Error />
+            },
+            {
                 path: '/login',
                 Component: Login
             },
@@ -75,13 +82,6 @@ const router = createBrowserRouter([
                 element: <PrivateRoute>
                     <UpdateBook />
                 </PrivateRoute>,
-                errorElement: <Error />
-            },
-            {
-                path: 'book-details/:id',
-                loader: ({ params }) => fetch(`${import.meta.env.VITE_SERVER_URL}/book/${params.id}`),
-                element: <BookDetails />,
-                hydrateFallbackElement: <Loading />,
                 errorElement: <Error />
             },
             {

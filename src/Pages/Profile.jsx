@@ -70,7 +70,7 @@ const Profile = () => {
                         <ZoomInSection>
                             <div className="flex justify-self-center avatar avatar-online mt-10">
                                 <div className="w-32 rounded-full">
-                                    <img src={user?.photoURL} />
+                                    <img src={user?.photoURL || "https://res.cloudinary.com/dvkiiyhaj/image/upload/v1756625310/hjsdchtjcutflbmbti83.png"} />
                                 </div>
                             </div>
                             <div className="flex flex-col justify-center items-center space-y-2 py-5">
