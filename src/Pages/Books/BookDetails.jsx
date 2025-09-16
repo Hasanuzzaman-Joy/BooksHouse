@@ -7,7 +7,6 @@ import Swal from "sweetalert2";
 import DisplayReview from "../../Components/DisplayReview";
 import Loading from "../../Components/Loading";
 import { Bounce, toast, ToastContainer } from "react-toastify";
-import Container from "../../Components/Container";
 
 const BookDetails = () => {
 
@@ -148,8 +147,7 @@ const BookDetails = () => {
     };
 
     return (
-        <Container>
-            <ToastContainer />
+        <>
             <div className="bg-[#f4f3f3] mx-auto rounded-xl shadow-lg overflow-hidden md:flex">
                 <figure className="w-full md:w-1/2 object-cover h-130 flex items-center justify-center bg-[#bfbdff]">
                     <img
@@ -279,7 +277,7 @@ const BookDetails = () => {
             <Suspense fallback={<Loading />}>
                 <DisplayReview reviews={reviews} setReviews={setReviews} />
             </Suspense>
-        </Container>
+        </>
     );
 };
 

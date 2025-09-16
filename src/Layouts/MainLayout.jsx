@@ -4,6 +4,7 @@ import Footer from "../Components/Footer";
 import Loading from "../Components/Loading";
 import ScrollToTop from "../Components/ScrollToTop";
 import PageWrapper from "../Components/PageWrapper";
+import { ToastContainer } from "react-toastify";
 
 const MainLayout = () => {
   const navigation = useNavigation();
@@ -22,6 +23,7 @@ const MainLayout = () => {
       <div className="bg-[#bfbdff] w-full">
         <Footer />
       </div>
+      <ToastContainer />
     </>
   );
 };

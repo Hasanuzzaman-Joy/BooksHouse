@@ -1,10 +1,9 @@
 import { Link } from "react-router";
 import ZoomInSection from "./ZoomInSection";
-import Container from "./Container";
 
 const PopularBooks = ({ popularBooks }) => {
   return (
-    <Container>
+    <>
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
         {popularBooks.map((book) => (
           <ZoomInSection key={book._id}>
@@ -50,7 +49,7 @@ const PopularBooks = ({ popularBooks }) => {
           </ZoomInSection>
         ))}
       </div>
-    </Container>
+    </>
   );
 };
 

@@ -1,13 +1,12 @@
 import { use } from "react";
 import StarRatings from "react-star-ratings";
 import ZoomInSection from "../Components/ZoomInSection";
-import Container from "../Components/Container";
 
 const Testimonial = ({ testimonialData }) => {
     const testimonial = use(testimonialData);
 
     return (
-        <Container>
+        <>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {
                     testimonial.map(test => (
@@ -49,7 +48,7 @@ const Testimonial = ({ testimonialData }) => {
                     ))
                 }
             </div>
-        </Container>
+        </>
     );
 };
 

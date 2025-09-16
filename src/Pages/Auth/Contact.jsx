@@ -32,7 +32,7 @@ const Contact = () => {
 
   return (
     <div className="bg-[#FAFAF9] w-full mx-auto py-10 px-4 md:px-0">
-      <ToastContainer />
+      
 
       <div className="w-full md:w-11/12 max-w-7xl mx-auto flex flex-col md:flex-row min-h-[600px] rounded-md overflow-hidden shadow-xl">
         {/* Left Column: Contact Form */}

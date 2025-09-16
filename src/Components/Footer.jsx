@@ -5,7 +5,7 @@ import { Link } from "react-router";
 const Footer = () => {
     return (
         <>
-            <div className="footer grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-base-content py-10 px-5 md:py-16 md:px-10 w-full md:w-11/12 mx-auto">
+            <div className="footer grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-base-content w-full md:max-w-screen-xl mx-auto px-4 py-10 md:py-16">
                 <aside className="flex flex-row justify-center items-center">
                     <img src="/logo.png" alt="" className="w-14"/>
                     <h1 className='text-[#242253] font-bold text-base md:text-xl -ml-[2px]'>Books<span className='text-[#faf34a]'>House</span></h1>

@@ -1,6 +1,5 @@
 import { Link } from "react-router";
 import ZoomInSection from "./ZoomInSection";
-import Container from "./Container";
 
 const CallToAction = () => {
   return (
@@ -12,7 +11,6 @@ const CallToAction = () => {
       }}
     >
       <ZoomInSection>
-        <Container>
           <div className="relative z-10 text-center">
             <h2 className="text-4xl font-bold mb-4 text-white">
               Track, review, and discover books.
@@ -28,7 +26,6 @@ const CallToAction = () => {
               Get Started
             </Link>
           </div>
-        </Container>
       </ZoomInSection>
     </section>
   );

@@ -1,12 +1,11 @@
 import { use } from "react";
 import ZoomInSection from "./ZoomInSection";
-import Container from "./Container";
 
 const Faq = ({ faqData }) => {
   const faqs = use(faqData);
 
   return (
-    <Container>
+    <>
       <h1 className="text-4xl font-bold text-center py-5 leading-14 text-[#242253]">
         Frequently Asked Questions (FAQs)
       </h1>
@@ -21,7 +20,7 @@ const Faq = ({ faqData }) => {
           </div>
         </ZoomInSection>
       ))}
-    </Container>
+    </>
   );
 };
 

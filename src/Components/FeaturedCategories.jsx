@@ -1,13 +1,12 @@
 import { use } from "react";
 import { Link } from "react-router";
 import ZoomInSection from "./ZoomInSection";
-import Container from "./Container";
 
 export default function FeaturedCategories({ categoriesData }) {
   const categories = use(categoriesData);
 
   return (
-    <Container>
+    <>
       <section className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
         {categories.map((category) => (
           <ZoomInSection key={category.id}>
@@ -40,6 +39,6 @@ export default function FeaturedCategories({ categoriesData }) {
           </ZoomInSection>
         ))}
       </section>
-    </Container>
+    </>
   );
 }

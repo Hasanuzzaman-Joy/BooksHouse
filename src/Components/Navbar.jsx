@@ -5,12 +5,14 @@ const Navbar = () => {
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
 
+  // Handle Log Out
   const logOutForm = () => {
     logOut().then(() => {
       navigate("/login");
     });
   };
 
+  // Navbar Links
   const link = (
     <>
       <li>
@@ -18,7 +20,9 @@ const Navbar = () => {
           to="/"
           className={({ isActive }) =>
             `px-4 py-2 text-base font-semibold rounded-md ${
-              isActive ? "bg-[#bfbdff] text-[#242253]" : "hover:bg-[#bfbdff] hover:text-[#242253]"
+              isActive
+                ? "bg-[#bfbdff] text-[#242253]"
+                : "hover:bg-[#bfbdff] hover:text-[#242253]"
             }`
           }
         >
@@ -30,18 +34,23 @@ const Navbar = () => {
           to="/bookshelf"
           className={({ isActive }) =>
             `px-4 py-2 text-base font-semibold rounded-md ${
-              isActive ? "bg-[#bfbdff] text-[#242253]" : "hover:bg-[#bfbdff] hover:text-[#242253]"
+              isActive
+                ? "bg-[#bfbdff] text-[#242253]"
+                : "hover:bg-[#bfbdff] hover:text-[#242253]"
             }`
           }
         >
           Bookshelf
         </NavLink>
-      </li><li>
+      </li>
+      <li>
         <NavLink
           to="/contact"
           className={({ isActive }) =>
             `px-4 py-2 text-base font-semibold rounded-md ${
-              isActive ? "bg-[#bfbdff] text-[#242253]" : "hover:bg-[#bfbdff] hover:text-[#242253]"
+              isActive
+                ? "bg-[#bfbdff] text-[#242253]"
+                : "hover:bg-[#bfbdff] hover:text-[#242253]"
             }`
           }
         >
@@ -55,7 +64,9 @@ const Navbar = () => {
             to="/dashboard/my-books"
             className={({ isActive }) =>
               `px-4 py-2 text-base font-semibold rounded-md ${
-                isActive ? "bg-[#bfbdff] text-[#242253]" : "hover:bg-[#bfbdff] hover:text-[#242253]"
+                isActive
+                  ? "bg-[#bfbdff] text-[#242253]"
+                  : "hover:bg-[#bfbdff] hover:text-[#242253]"
               }`
             }
           >
@@ -71,7 +82,9 @@ const Navbar = () => {
               to="/login"
               className={({ isActive }) =>
                 `px-4 py-2 text-base font-semibold rounded-md md:hidden ${
-                  isActive ? "bg-[#bfbdff] text-[#242253]" : "hover:bg-[#bfbdff] hover:text-[#242253]"
+                  isActive
+                    ? "bg-[#bfbdff] text-[#242253]"
+                    : "hover:bg-[#bfbdff] hover:text-[#242253]"
                 }`
               }
             >
@@ -83,7 +96,9 @@ const Navbar = () => {
               to="/register"
               className={({ isActive }) =>
                 `px-4 py-2 text-base font-semibold rounded-md md:hidden ${
-                  isActive ? "bg-[#bfbdff] text-[#242253]" : "hover:bg-[#bfbdff] hover:text-[#242253]"
+                  isActive
+                    ? "bg-[#bfbdff] text-[#242253]"
+                    : "hover:bg-[#bfbdff] hover:text-[#242253]"
                 }`
               }
             >
@@ -98,11 +113,15 @@ const Navbar = () => {
   return (
     <div className="fixed top-0 left-0 right-0 z-50">
       <div className="w-full bg-white border-b-[0.5px] border-[#dbdbdb]">
-        <div className="navbar w-full md:w-11/12 mx-auto">
+        <div className="navbar w-full md:max-w-screen-xl mx-auto px-4">
           <div className="navbar-start">
             {/* Mobile Dropdown */}
             <div className="dropdown">
-              <div tabIndex={0} role="button" className="btn btn-ghost lg:hidden -ml-3">
+              <div
+                tabIndex={0}
+                role="button"
+                className="btn btn-ghost lg:hidden -ml-3"
+              >
                 <svg
                   xmlns="http://www.w3.org/2000/svg"
                   className="h-5 w-5"
@@ -110,7 +129,12 @@ const Navbar = () => {
                   viewBox="0 0 24 24"
                   stroke="currentColor"
                 >
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M4 6h16M4 12h8m-8 6h16" />
+                  <path
+                    strokeLinecap="round"
+                    strokeLinejoin="round"
+                    strokeWidth="2"
+                    d="M4 6h16M4 12h8m-8 6h16"
+                  />
                 </svg>
               </div>
               <ul
@@ -135,7 +159,7 @@ const Navbar = () => {
             <ul className="menu menu-horizontal px-1">{link}</ul>
           </div>
 
-          {/* User Avatar / Auth Buttons */}
+          {/* User Avatar and auth buttons */}
           {user ? (
             <div className="navbar-end flex gap-4">
               <div className="dropdown dropdown-left dropdown-bottom">

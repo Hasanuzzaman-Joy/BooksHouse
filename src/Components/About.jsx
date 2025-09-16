@@ -1,11 +1,9 @@
 import { motion } from "motion/react";
 import ZoomInSection from "../Components/ZoomInSection";
-import Container from "./Container";
 
 const About = () => {
     return (
         <ZoomInSection>
-            <Container>
                 <div className='grid grid-cols-1 md:grid-cols-2 gap-6 mt-15 md:mt-20 md:px-0 px-4'>
                     <div>
                         <h1 className='text-4xl font-bold mb-5 text-center md:text-left text-[#242253]'>About BooksHouse</h1>
@@ -33,7 +31,6 @@ const About = () => {
                         />
                     </div>
                 </div>
-            </Container>
         </ZoomInSection>
     );
 };
