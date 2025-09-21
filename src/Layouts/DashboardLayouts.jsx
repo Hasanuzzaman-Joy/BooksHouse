@@ -37,15 +37,16 @@ const DashboardLayouts = () => {
       <div className="h-screen flex">
         {/* Sidebar */}
         <div
-          className={`bg-[#242253] text-white w-64 h-full flex flex-col fixed md:static z-40 
-                    transform transition-transform duration-300 pt-16 md:pt-0
-                    ${isOpen ? "translate-x-0" : "-translate-x-full"
-            } md:translate-x-0`}
+          className={`bg-[#242253] text-white w-64 h-full flex flex-col fixed xl:static z-40 
+                    transform transition-transform duration-300 pt-16 xl:pt-0
+                    ${
+                      isOpen ? "translate-x-0" : "-translate-x-full"
+                    } xl:translate-x-0`}
         >
           {/* Sidebar Top */}
           <div className="p-4 flex flex-col gap-2 border-b border-[#bfbdff]">
             <Link to="/">
-              <div className="flex justify-center items-center gap-2 -ml-12">
+              <div className="hidden md:hidden xl:flex justify-center items-center gap-2 -ml-12">
                 <img src="/logo.png" className="w-8" alt="logo" />
                 <h1 className="text-white font-bold text-base md:text-2xl">
                   Books<span className="text-[#faf34a]">House</span>
@@ -54,8 +55,10 @@ const DashboardLayouts = () => {
             </Link>
 
             {user ? (
-              <div className="mt-6">
-                <p className="font-semibold">{user?.displayName || "No Name"}</p>
+              <div className="mt-2 md:mt-6">
+                <p className="font-semibold">
+                  {user?.displayName || "No Name"}
+                </p>
                 <p className="text-sm text-[#bfbdff]">
                   {user?.email || "No Email"}
                 </p>
@@ -98,21 +101,10 @@ const DashboardLayouts = () => {
                 <FaUser />
                 My Profile
               </Link>
-
-              {/* Logout for mobile */}
-              {user && (
-                <button
-                  onClick={handleLogout}
-                  className="md:hidden bg-[#bfbdff] text-[#242253] p-2 rounded font-semibold flex items-center gap-2 cursor-pointer hover:bg-[#a9a8e6]"
-                >
-                  <FaSignOutAlt />
-                  Logout
-                </button>
-              )}
             </div>
           )}
 
-          {/* Logout for Desktop */}
+          {/* Logout Button */}
           {user && (
             <div className="p-4 mt-auto">
               <button
@@ -127,15 +119,22 @@ const DashboardLayouts = () => {
         </div>
 
         {/* Mobile Top Navbar */}
-        <div className="md:hidden fixed top-0 left-0 right-0 bg-[#242253] text-white flex justify-between items-center p-4 z-50">
+        <div className="xl:hidden fixed top-0 left-0 right-0 bg-[#242253] text-white flex justify-between items-center p-4 z-50">
           <button className="text-2xl" onClick={() => setIsOpen(!isOpen)}>
             {isOpen ? <FaTimes /> : <FaBars />}
           </button>
-          <h1 className="text-xl font-bold">BooksHouse</h1>
+          <Link to="/">
+            <div className="flex justify-center items-center gap-2 -ml-12">
+              <img src="/logo.png" className="w-8" alt="logo" />
+              <h1 className="text-white font-bold text-base md:text-2xl">
+                Books<span className="text-[#faf34a]">House</span>
+              </h1>
+            </div>
+          </Link>
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 bg-[#FAFAF9] overflow-auto">
+        <div className="flex-1 bg-[#dddddd] px-4 xl:px-10 py-6 xl:py-10 mx-auto overflow-auto">
           <Outlet />
         </div>
         <ToastContainer />

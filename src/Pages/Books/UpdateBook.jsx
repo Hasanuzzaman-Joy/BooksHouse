@@ -93,7 +93,7 @@ const UpdateBook = () => {
         <>
             {
                 loading ? <Loading /> :
-                    <div className=' bg-[#f4f3f3] w-full mx-auto py-10 px-4'>
+                    <div className=' px-6 md:px-10 py-10 mx-auto'>
                         <ZoomInSection>
                             
                             <div className="max-w-[96%] md:max-w-[800px] mx-auto bg-base-100 p-4 rounded-md sm:p-8 shadow-xl" style={{

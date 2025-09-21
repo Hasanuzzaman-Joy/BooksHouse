@@ -1,8 +1,8 @@
-import { motion } from "motion/react"
+import { motion } from "motion/react";
 
 const Loading = () => {
-    return (
-    <div className="w-full min-h-screen flex justify-center items-center bg-white">
+  return (
+    <div className="w-full min-h-screen flex justify-center items-center">
       <motion.span
         className="loading loading-ring loading-xl"
         initial={{ scale: 1 }}
@@ -14,7 +14,7 @@ const Loading = () => {
         }}
       />
     </div>
-    );
+  );
 };
 
 export default Loading;
