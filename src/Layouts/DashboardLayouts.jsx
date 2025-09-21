@@ -21,13 +21,19 @@ const DashboardLayouts = () => {
   const [accordionOpen, setAccordionOpen] = useState(true);
   const { user, logOut } = useContext(AuthContext);
 
+  // Handle logout
   const handleLogout = () => {
     logOut()
-      .then(() => {
-        toast.success("Logged out successfully!");
-      })
-      .catch((error) => console.error(error));
+      .then(() => toast.success("Logged out successfully!"))
+      .catch(console.error);
   };
+
+  // Sidebar links data
+  const sidebarLinks = [
+    { to: "/dashboard/my-books", icon: <FaBook />, label: "My Books" },
+    { to: "/dashboard/add-book", icon: <FaPlusCircle />, label: "Add Book" },
+    { to: "/dashboard/profile", icon: <FaUser />, label: "My Profile" },
+  ];
 
   return (
     <>
@@ -38,10 +44,8 @@ const DashboardLayouts = () => {
         {/* Sidebar */}
         <div
           className={`bg-[#242253] text-white w-64 h-full flex flex-col fixed xl:static z-40 
-                    transform transition-transform duration-300 pt-16 xl:pt-0
-                    ${
-                      isOpen ? "translate-x-0" : "-translate-x-full"
-                    } xl:translate-x-0`}
+            transform transition-transform duration-300 pt-16 xl:pt-0
+            ${isOpen ? "translate-x-0" : "-translate-x-full"} xl:translate-x-0`}
         >
           {/* Sidebar Top */}
           <div className="p-4 flex flex-col gap-2 border-b border-[#bfbdff]">
@@ -56,11 +60,9 @@ const DashboardLayouts = () => {
 
             {user ? (
               <div className="mt-2 md:mt-6">
-                <p className="font-semibold">
-                  {user?.displayName || "No Name"}
-                </p>
+                <p className="font-semibold">{user.displayName || "No Name"}</p>
                 <p className="text-sm text-[#bfbdff]">
-                  {user?.email || "No Email"}
+                  {user.email || "No Email"}
                 </p>
               </div>
             ) : (
@@ -80,27 +82,15 @@ const DashboardLayouts = () => {
           {/* Sidebar Links */}
           {accordionOpen && (
             <div className="flex flex-col flex-1 p-4 space-y-4">
-              <Link
-                to="/dashboard/my-books"
-                className="bg-[#bfbdff] text-[#242253] p-2 rounded font-semibold flex items-center gap-2 hover:bg-[#a9a8e6]"
-              >
-                <FaBook />
-                My Books
-              </Link>
-              <Link
-                to="/dashboard/add-book"
-                className="bg-[#bfbdff] text-[#242253] p-2 rounded font-semibold flex items-center gap-2 hover:bg-[#a9a8e6]"
-              >
-                <FaPlusCircle />
-                Add Book
-              </Link>
-              <Link
-                to="/dashboard/profile"
-                className="bg-[#bfbdff] text-[#242253] p-2 rounded font-semibold flex items-center gap-2 hover:bg-[#a9a8e6]"
-              >
-                <FaUser />
-                My Profile
-              </Link>
+              {sidebarLinks.map(({ to, icon, label }) => (
+                <Link
+                  key={label}
+                  to={to}
+                  className="bg-[#bfbdff] text-[#242253] p-2 rounded font-semibold flex items-center gap-2 hover:bg-[#a9a8e6]"
+                >
+                  {icon} {label}
+                </Link>
+              ))}
             </div>
           )}
 
@@ -111,8 +101,7 @@ const DashboardLayouts = () => {
                 onClick={handleLogout}
                 className="bg-[#bfbdff] text-[#242253] p-2 rounded font-semibold flex items-center gap-2 w-full cursor-pointer hover:bg-[#a9a8e6]"
               >
-                <FaSignOutAlt />
-                Logout
+                <FaSignOutAlt /> Logout
               </button>
             </div>
           )}
@@ -134,9 +123,20 @@ const DashboardLayouts = () => {
         </div>
 
         {/* Main Content */}
-        <div className="flex-1 bg-[#dddddd] px-4 xl:px-10 py-6 xl:py-10 mx-auto overflow-auto">
-          <Outlet />
+        <div className="flex-1 flex flex-col bg-[#dddddd] mx-auto overflow-auto">
+          <main className="flex-1 mt-20 xl:mt-0 p-4 xl:p-10">
+            {/* Boxed outlet area */}
+            <div className="bg-white rounded shadow-md p-6 xl:p-10">
+              <Outlet />
+            </div>
+          </main>
+
+          {/* Footer */}
+          <footer className="bg-[#bfbdff] text-center text-sm text-[#242253] font-semibold py-5 border-t border-[#bfbdff]">
+            © {new Date().getFullYear()} BooksHouse. All rights reserved.
+          </footer>
         </div>
+
         <ToastContainer />
       </div>
     </>

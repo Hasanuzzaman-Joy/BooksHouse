@@ -7,6 +7,7 @@ import ZoomInSection from "../../Components/ZoomInSection";
 import { FaUserCircle } from "react-icons/fa";
 
 const Profile = () => {
+  // Page title
   useEffect(() => {
     document.title = "BooksHouse | Profile";
   }, []);
@@ -37,51 +38,55 @@ const Profile = () => {
   const categoryCount = {};
   books.forEach((book) => {
     const category = book.book_category?.toLowerCase().trim();
-    if (category) {
-      categoryCount[category] = (categoryCount[category] || 0) + 1;
-    }
+    if (category) categoryCount[category] = (categoryCount[category] || 0) + 1;
   });
 
-  // Prepare flat chart data
+  // Prepare chart data
   const chartData = Object.entries(categoryCount).map(([name, value]) => ({
     name,
     value,
   }));
 
-  // Calculate total books count
-  const totalBooks = books.length;
+  // Book counts
+  const counts = {
+    fiction: categoryCount["fiction"] || 0,
+    "non-fiction":
+      categoryCount["non-fiction"] || categoryCount["nonfiction"] || 0,
+    fantasy: categoryCount["fantasy"] || 0,
+    historical: categoryCount["historical"] || 0,
+    biography: categoryCount["biography"] || 0,
+    comics: categoryCount["comics"] || 0,
+  };
 
-  // Get counts per category or 0 if missing
-  const fictionCount = categoryCount["fiction"] || 0;
-  const nonFictionCount =
-    categoryCount["non-fiction"] || categoryCount["nonfiction"] || 0;
-  const fantasyCount = categoryCount["fantasy"] || 0;
-  const historicalCount = categoryCount["historical"] || 0;
-  const biographyCount = categoryCount["biography"] || 0;
-  const comicsCount = categoryCount["comics"] || 0;
+  // Table rows
+  const tableRows = [
+    ["Fiction", counts.fiction, "Non-Fiction", counts["non-fiction"]],
+    ["Fantasy", counts.fantasy, "Historical", counts.historical],
+    ["Biography", counts.biography, "Comics", counts.comics],
+  ];
 
   return (
     <>
       {loading ? (
         <Loading />
       ) : (
-        <div className="w-full bg-[#f4f3f3] mx-auto px-4 md:px-10 py-5 mt-20 md:mt-0 lg:mt-0">
+        <div className="w-full mx-auto flex flex-col gap-6">
           {/* Title */}
-          <div className="mt-4 mb-10">
+          <div className="flex flex-col justify-center space-y-3">
             <div className="flex items-center gap-2 text-[#242253]">
-              <FaUserCircle className="text-3xl md:text-4xl" />
+              <FaUserCircle className="text-2xl md:text-4xl" />
               <h1 className="text-2xl md:text-4xl font-bold">Profile Page</h1>
             </div>
-            <p className="text-gray-500 text-base mt-3">
+            <p className="text-gray-500 text-base">
               Manage your personal information and bookshelf
             </p>
-            <div className="w-24 h-[2px] bg-[#bfbdff] mt-3"></div>
+            <div className="w-24 h-[2px] bg-[#bfbdff]"></div>
           </div>
 
           {/* Profile Info */}
           <ZoomInSection>
-            <div className="mt-10 mb-6">
-              <div className="flex justify-self-center avatar avatar-online">
+            <div className="my-4 flex flex-col items-center">
+              <div className="avatar avatar-online">
                 <div className="w-32 rounded-full border-6 border-[#bfbdff]">
                   <img
                     src={
@@ -91,19 +96,19 @@ const Profile = () => {
                   />
                 </div>
               </div>
-              <div className="flex flex-col justify-center items-center text-gray-700 space-y-2 py-5">
-                <h1 className="text-lg font-semibold">
-                  Name : {user?.displayName}
+              <div className="flex flex-col items-center text-gray-700 space-y-2 mt-4">
+                <h1 className="text-base md:text-lg font-semibold">
+                  Name: {user?.displayName || "No Name"}
                 </h1>
-                <h2 className="text-lg font-semibold">Email : {user?.email}</h2>
+                <h1 className="text-base md:text-lg font-semibold">
+                  Email: {user?.email || "No Email"}
+                </h1>
               </div>
             </div>
           </ZoomInSection>
 
           {/* Bookshelf Summary */}
-          <div
-            className={`flex gap-2 flex-col md:flex-col lg:flex-row justify-center items-center`}
-          >
+          <div className="flex flex-col lg:flex-row gap-4 justify-center items-center">
             <div className="flex-1">
               <h1 className="text-xl text-center md:text-2xl font-bold text-[#242253]">
                 Bookshelf Summary :
@@ -119,33 +124,22 @@ const Profile = () => {
                       </tr>
                     </thead>
                     <tbody>
-                      <tr className="text-[#242253] text-sm font-bold">
-                        <td className="border border-gray-300">
-                          Fiction : {fictionCount}
-                        </td>
-                        <td className="border border-gray-300">
-                          Non-Fiction : {nonFictionCount}
-                        </td>
-                      </tr>
-                      <tr className="text-[#242253] text-sm font-bold">
-                        <td className="border border-gray-300">
-                          Fantasy : {fantasyCount}
-                        </td>
-                        <td className="border border-gray-300">
-                          Historical : {historicalCount}
-                        </td>
-                      </tr>
-                      <tr className="text-[#242253] text-sm font-bold">
-                        <td className="border border-gray-300">
-                          Biography : {biographyCount}
-                        </td>
-                        <td className="border border-gray-300">
-                          Comics : {comicsCount}
-                        </td>
-                      </tr>
-                      <tr className="bg-[#242253] text-white">
+                      {tableRows.map(([label1, count1, label2, count2], i) => (
+                        <tr
+                          key={i}
+                          className="text-[#242253] text-base font-medium"
+                        >
+                          <td className="border border-gray-300">
+                            {label1} : {count1}
+                          </td>
+                          <td className="border border-gray-300">
+                            {label2} : {count2}
+                          </td>
+                        </tr>
+                      ))}
+                      <tr className="bg-[#242253] text-white text-base font-semibold">
                         <td className="border border-gray-300" colSpan={2}>
-                          You have added : {totalBooks} books{" "}
+                          You have added : {books.length} books
                         </td>
                       </tr>
                     </tbody>
