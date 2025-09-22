@@ -39,6 +39,11 @@ const BookDetails = () => {
             setErr("Please write your feedback here");;
             return;
         }
+        
+        if (!rating) {
+            setErr("Please give a star rating before submitting your review.");
+            return;
+        }
 
         const doc = {
             reviewedBookId: id,
@@ -147,8 +152,8 @@ const BookDetails = () => {
     };
 
     return (
-        <>
-            <div className="bg-[#f4f3f3] mx-auto rounded-xl shadow-lg overflow-hidden md:flex">
+        <div className="w-full md:max-w-screen-xl mx-auto px-4 py-10">
+            <div className="bg-[#f4f3f3] mx-auto rounded shadow-lg overflow-hidden md:flex">
                 <figure className="w-full md:w-1/2 object-cover h-130 flex items-center justify-center bg-[#bfbdff]">
                     <img
                         src={cover_photo}
@@ -157,8 +162,8 @@ const BookDetails = () => {
                     />
                 </figure>
                 <div className="px-6 flex flex-col justify-center md:w-2/3 space-y-4">
-                    <h2 className="text-3xl font-bold text-[#242253] text-center mt-8 md:mt-0">{book_title}</h2>
-                    <p className="text-gray-600 mb-5 text-base text-center">{book_overview}</p>
+                    <h2 className="text-2xl md:text-4xl font-bold text-[#242253] mt-8 md:mt-0">{book_title}</h2>
+                    <p className="text-gray-600 mb-5 text-base leading-7">{book_overview}</p>
 
                     <div className="grid grid-cols-1 md:grid-cols-2 gap-4 text-base text-gray-700 w-full">
                         <div>
@@ -182,7 +187,7 @@ const BookDetails = () => {
                         <div>
                             <span className="font-semibold text-[#242253]">Reading Status:</span> {read}
                             <div className="w-full mt-3">
-                                <div className=" w-3/4 bg-gray-200 rounded-full h-3 overflow-hidden">
+                                <div className=" w-3/4 bg-gray-200 rounded h-3 overflow-hidden">
                                     <div
                                         className={`h-full transition-all duration-500 ${getProgressValue(read) === 100
                                             ? "bg-green-500"
@@ -193,7 +198,7 @@ const BookDetails = () => {
                                         style={{ width: `${getProgressValue(read)}%` }}
                                     ></div>
                                 </div>
-                                <p className="text-xs text-gray-600 mt-1">
+                                <p className="text-xs text-gray-600 mt-2">
                                     {read === "Want-to-Read" && "Not started"}
                                     {read === "Reading" && "Currently Reading"}
                                     {read === "Read" && "Completed"}
@@ -201,8 +206,8 @@ const BookDetails = () => {
                             </div>
                         </div>
                         <div>
-                            {
-                                email === user?.email ? <>
+                            {email === user?.email ? (
+                                <>
                                     <h1 className="font-semibold text-[#242253] mb-2">
                                         Update the reading status :
                                     </h1>
@@ -212,18 +217,29 @@ const BookDetails = () => {
                                             value={read}
                                             name="reading_status"
                                             id="reading_status"
-                                            className="w-full px-3 py-2 rounded-md border border-gray-300 bg-gray-50 text-gray-800 focus:border-gray-600 -ml-1 md:mr-10"
+                                            className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 shadow-sm focus:border-[#242253] focus:ring-1 focus:ring-[#242253] outline-none transition-all duration-300 -ml-1 md:mr-10 cursor-pointer"
                                             required
                                         >
-                                            <option value="" disabled>Select your current reading status</option>
-                                            <option value="Want-to-Read" disabled={read !== "Want-to-Read"}>Want-to-Read</option>
-                                            <option value="Reading" disabled={read !== "Want-to-Read"}>Reading</option>
-                                            <option value="Read" disabled={read !== "Reading"}>Read</option>
+                                            <option value="" disabled>
+                                                Select your current reading status
+                                            </option>
+                                            <option value="Want-to-Read" disabled={read !== "Want-to-Read"}>
+                                                Want-to-Read
+                                            </option>
+                                            <option value="Reading" disabled={read !== "Want-to-Read"}>
+                                                Reading
+                                            </option>
+                                            <option value="Read" disabled={read !== "Reading"}>
+                                                Read
+                                            </option>
                                         </select>
                                     </div>
-                                </> : <></>
-                            }
+                                </>
+                            ) : (
+                                <></>
+                            )}
                         </div>
+
                     </div>
 
                     <div className="flex justify-center items-center pt-10">
@@ -253,8 +269,8 @@ const BookDetails = () => {
                             id="book_review"
                             rows="7"
                             placeholder="Share your thoughts, opinions, or feedback about the book..."
-                            className="w-full px-3 py-2 rounded-md border border-gray-300 bg-gray-50 text-gray-800 focus:border-gray-600 resize-none"
-                        ></textarea>
+                            className="w-full px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 shadow-sm focus:border-[#242253] focus:ring-1 focus:ring-[#242253] outline-none transition-all duration-200 resize-none"
+                        />
                         {err && <p className='text-sm' style={{ color: 'red' }}>{err}</p>}
                     </div>
                     <div className="my-4 flex gap-1 items-center">
@@ -277,7 +293,7 @@ const BookDetails = () => {
             <Suspense fallback={<Loading />}>
                 <DisplayReview reviews={reviews} setReviews={setReviews} />
             </Suspense>
-        </>
+        </div>
     );
 };
 

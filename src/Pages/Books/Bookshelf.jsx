@@ -95,10 +95,10 @@ const Bookshelf = () => {
             {/* Filters Section */}
             <div className="flex flex-col items-center gap-4 mb-6 w-full max-w-md mx-auto">
               {/* Search Input */}
-              <div className="flex items-center gap-2 w-full">
+              <div className="hidden md:flex items-center gap-2 w-full">
                 <label
                   htmlFor="book_search"
-                  className="text-sm font-semibold text-gray-700"
+                  className="text-sm font-medium text-gray-700"
                 >
                   Search:
                 </label>
@@ -110,7 +110,7 @@ const Bookshelf = () => {
                   }}
                   id="book_search"
                   placeholder="Book or Author name"
-                  className="flex-1 px-3 py-2 rounded-md border border-gray-300 bg-gray-50 text-gray-800 focus:border-gray-600 cursor-pointer"
+                  className="flex-1 px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 placeholder-gray-400 shadow-sm focus:border-[#242253] focus:ring-1 focus:ring-[#242253] outline-none transition-all duration-300 cursor-pointer"
                   autoComplete="off"
                 />
               </div>
@@ -119,7 +119,7 @@ const Bookshelf = () => {
               <div className="flex items-center gap-2 w-full">
                 <label
                   htmlFor="reading_status"
-                  className="text-sm font-semibold text-gray-700"
+                  className="text-sm font-medium text-gray-700"
                 >
                   Sort by:
                 </label>
@@ -130,7 +130,7 @@ const Bookshelf = () => {
                     setCurrentPage(1);
                   }}
                   value={filteredStatus}
-                  className="flex-1 px-3 py-2 rounded-md border border-gray-300 bg-gray-50 text-gray-800 focus:border-gray-600 cursor-pointer"
+                  className="flex-1 px-4 py-3 rounded-lg border border-gray-300 bg-white text-gray-900 shadow-sm focus:border-[#242253] focus:ring-1 focus:ring-[#242253] outline-none transition-all duration-300 cursor-pointer"
                 >
                   <option value="">Reading status</option>
                   <option value="Want-to-Read">Want-to-Read</option>
