@@ -115,7 +115,7 @@ const Profile = () => {
               </h1>
               <div className="w-full overflow-x-auto">
                 <ZoomInSection>
-                  <table className="table w-full border border-gray-400 mt-3 md:mt-6 text-center mb-8 md:mb-0">
+                  <table className="table w-full border border-gray-400 mt-2 md:mt-4 text-center mb-8 md:mb-0">
                     <thead className="bg-[#242253] text-white">
                       <tr className="text-base">
                         <th className="border border-gray-300" colSpan={2}>

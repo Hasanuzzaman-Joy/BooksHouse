@@ -24,7 +24,10 @@ const DashboardLayouts = () => {
   // Handle logout
   const handleLogout = () => {
     logOut()
-      .then(() => toast.success("Logged out successfully!"))
+      .then(() => {
+        toast.success("Logged out successfully!");
+        setIsOpen(false);
+      })
       .catch(console.error);
   };
 
@@ -86,6 +89,7 @@ const DashboardLayouts = () => {
                 <Link
                   key={label}
                   to={to}
+                  onClick={() => setIsOpen(false)} // 👈 close sidebar on mobile after clicking
                   className="bg-[#bfbdff] text-[#242253] p-2 rounded font-semibold flex items-center gap-2 hover:bg-[#a9a8e6]"
                 >
                   {icon} {label}
