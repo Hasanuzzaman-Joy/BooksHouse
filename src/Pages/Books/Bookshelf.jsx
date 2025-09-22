@@ -8,6 +8,7 @@ import Pagination from "../../Components/Pagination";
 const Bookshelf = () => {
   const [filteredStatus, setFilteredStatus] = useState("");
   const [searchParams, setSearchParams] = useState("");
+  const [allBooks, setAllBooks] = useState([]);
   const [books, setBooks] = useState([]);
   const [loading, setLoading] = useState(true);
   const [currentPage, setCurrentPage] = useState(1);
@@ -19,7 +20,7 @@ const Bookshelf = () => {
     document.title = "BooksHouse | Bookshelf";
   }, []);
 
-  //  Fetch Books Data
+  // Fetch Books Data
   useEffect(() => {
     const fetchBooks = async () => {
       setLoading(true);
@@ -27,12 +28,14 @@ const Bookshelf = () => {
         const res = await axios(
           `${
             import.meta.env.VITE_SERVER_URL
-          }/all-books?filteredStatus=${filteredStatus}&searchParams=${searchParams}&page=${currentPage}&limit=${limit}`
+          }/all-books?page=${currentPage}&limit=${limit}`
         );
+        setAllBooks(res.data.books || []);
         setBooks(res.data.books || []);
         setTotalPages(res.data.totalPages || 1);
       } catch (err) {
         console.error(err);
+        setAllBooks([]);
         setBooks([]);
         setTotalPages(1);
       } finally {
@@ -41,9 +44,30 @@ const Bookshelf = () => {
     };
 
     fetchBooks();
-  }, [filteredStatus, searchParams, currentPage]);
+  }, [currentPage]);
 
-  //  Scroll to Top on Page Change
+  // filtering for search
+  useEffect(() => {
+    let filtered = [...allBooks];
+
+    if (filteredStatus) {
+      filtered = filtered.filter(
+        (book) => book.reading_status === filteredStatus
+      );
+    }
+
+    if (searchParams) {
+      filtered = filtered.filter(
+        (book) =>
+          book.book_title.toLowerCase().includes(searchParams.toLowerCase()) ||
+          book.book_author.toLowerCase().includes(searchParams.toLowerCase())
+      );
+    }
+
+    setBooks(filtered);
+  }, [searchParams, filteredStatus, allBooks]);
+
+  // Scroll to Top on Page Change
   useEffect(() => {
     window.scrollTo({ top: 0, behavior: "smooth" });
   }, [currentPage]);
@@ -105,6 +129,7 @@ const Bookshelf = () => {
                     setFilteredStatus(e.target.value);
                     setCurrentPage(1);
                   }}
+                  value={filteredStatus}
                   className="flex-1 px-3 py-2 rounded-md border border-gray-300 bg-gray-50 text-gray-800 focus:border-gray-600 cursor-pointer"
                 >
                   <option value="">Reading status</option>
@@ -128,7 +153,7 @@ const Bookshelf = () => {
           </div>
 
           {/* Pagination */}
-          {totalPages > 1 && (
+          {!searchParams && !filteredStatus && totalPages > 1 && (
             <Pagination
               pages={Array.from({ length: totalPages }, (_, i) => i + 1)}
               handlePage={handlePage}
