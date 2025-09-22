@@ -101,8 +101,10 @@ const Login = () => {
           {/* Left: Form Section */}
           <div className="flex flex-1 justify-center items-center bg-base-100 p-8">
             <div className="w-full md:max-w-md">
-              <h2 className="mb-3 text-3xl font-bold">Login Your Account</h2>
-              <p className="mb-6 text-gray-600">
+              <h2 className="mb-3 text-2xl md:text-4xl font-bold">
+                Login Your Account
+              </h2>
+              <p className="mb-6 text-gray-500 leading-7">
                 Access your BooksHouse dashboard and manage your readings.
               </p>
 
@@ -165,9 +167,12 @@ const Login = () => {
                       </span>
                     </div>
                     <div>
-                      <a className="link link-hover text-sm underline">
+                      <Link
+                        to="/forget-password"
+                        className="link link-hover text-sm text-[#242253] hover:underline transition-all duration-300"
+                      >
                         Forgot password?
-                      </a>
+                      </Link>
                     </div>
                   </div>
                 </div>

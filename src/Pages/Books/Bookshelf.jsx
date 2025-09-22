@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import axios from "axios";
 import ZoomInSection from "../../Components/ZoomInSection";
-import BookCard from "../../Components/BookCard";
+import BookCard from "../../Components/Books/BookCard";
 import Loading from "../../Components/Loading";
 import Pagination from "../../Components/Pagination";
 

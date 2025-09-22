@@ -1,7 +1,7 @@
 import StarRatings from "react-star-ratings";
-import useAuth from "../Hooks/useAuth";
+import useAuth from "../../Hooks/useAuth";
 import Swal from "sweetalert2";
-import EditReview from "../Components/EditReview";
+import EditReview from "./EditReview";
 import { useState } from "react";
 
 const DisplayReview = ({ reviews, setReviews }) => {

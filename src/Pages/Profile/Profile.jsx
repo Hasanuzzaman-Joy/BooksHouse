@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import useAuth from "../../Hooks/useAuth";
 import axios from "axios";
 import Loading from "../../Components/Loading";
-import CustomActiveShapePieChart from "./CustomActiveShapePieChart";
+import Chart from "./Chart";
 import ZoomInSection from "../../Components/ZoomInSection";
 import { FaUserCircle } from "react-icons/fa";
 
@@ -151,7 +151,7 @@ const Profile = () => {
             {/* Chart */}
             <div className="w-full md:w-[450px]">
               <ZoomInSection>
-                <CustomActiveShapePieChart data={chartData} />
+                <Chart data={chartData} />
               </ZoomInSection>
             </div>
           </div>

@@ -14,7 +14,8 @@ import Loading from "../Components/Loading";
 import BookDetails from "../Pages/Books/BookDetails";
 import CategoryBooks from "../Pages/Books/CategoryBooks";
 import DashboardLayouts from "../Layouts/DashboardLayouts";
-import Contact from "../Pages/Auth/Contact";
+import Contact from "../Pages/Contact/Contact";
+import ForgotPassword from "../Pages/Auth/ForgotPassword/ForgotPassword";
 
 const router = createBrowserRouter([
   {
@@ -58,6 +59,10 @@ const router = createBrowserRouter([
       {
         path: "/contact",
         Component: Contact,
+      },
+      {
+        path: "/forget-password",
+        Component: ForgotPassword,
       },
       {
         path: "*",

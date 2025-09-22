@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import ZoomInSection from "../Components/ZoomInSection";
+import ZoomInSection from "../ZoomInSection";
 
 const BookCard = ({ book }) => {
   const {

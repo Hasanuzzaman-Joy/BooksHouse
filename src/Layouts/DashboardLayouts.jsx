@@ -130,7 +130,7 @@ const DashboardLayouts = () => {
         <div className="flex-1 flex flex-col bg-[#dddddd] mx-auto overflow-auto">
           <main className="flex-1 mt-20 xl:mt-0 p-4 xl:p-10">
             {/* Boxed outlet area */}
-            <div className="bg-white rounded shadow-md p-4 xl:p-14">
+            <div className="bg-[#f8f8f8e8] rounded shadow-md p-4 xl:p-14">
               <Outlet />
             </div>
           </main>

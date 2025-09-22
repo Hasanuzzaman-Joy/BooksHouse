@@ -4,10 +4,10 @@ import axios from "axios";
 import Swal from "sweetalert2";
 import { Bounce, toast } from "react-toastify";
 import useAuth from "../../Hooks/useAuth";
-import BookCover from "../../Components/BookCover";
-import BookDetailsSection from "../../Components/BookDetailsSection";
-import ReviewSection from "../../Components/ReviewSection";
-import DisplayReview from "../../Components/DisplayReview";
+import BookCover from "../../Components/Books/BookCover";
+import BookDetailsSection from "../../Components/Books/BookDetailsSection";
+import ReviewSection from "../../Components/Books/ReviewSection";
+import DisplayReview from "../../Components/Books/DisplayReview";
 import Loading from "../../Components/Loading";
 
 const BookDetails = () => {
