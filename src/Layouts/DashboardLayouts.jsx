@@ -62,9 +62,11 @@ const DashboardLayouts = () => {
             </Link>
 
             {user ? (
-              <div className="mt-2 md:mt-6">
-                <p className="font-semibold">{user.displayName || "No Name"}</p>
-                <p className="text-sm text-[#bfbdff]">
+              <div className="mt-0 md:mt-4">
+                <p className="font-semibold text-base">
+                  {user.displayName || "No Name"}
+                </p>
+                <p className="text-base text-[#bfbdff]">
                   {user.email || "No Email"}
                 </p>
               </div>
@@ -89,7 +91,7 @@ const DashboardLayouts = () => {
                 <Link
                   key={label}
                   to={to}
-                  onClick={() => setIsOpen(false)} // 👈 close sidebar on mobile after clicking
+                  onClick={() => setIsOpen(false)}
                   className="bg-[#bfbdff] text-[#242253] p-2 rounded font-semibold flex items-center gap-2 hover:bg-[#a9a8e6]"
                 >
                   {icon} {label}

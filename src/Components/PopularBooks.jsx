@@ -4,7 +4,7 @@ import ZoomInSection from "./ZoomInSection";
 const PopularBooks = ({ popularBooks }) => {
   return (
     <>
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-7">
+      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
         {popularBooks.map((book) => (
           <ZoomInSection key={book._id}>
             <div className="card w-full bg-[#f4f3f3] shadow-lg border border-gray-200 hover:shadow-xl transition duration-300">
@@ -20,7 +20,9 @@ const PopularBooks = ({ popularBooks }) => {
                   {book.book_title}
                 </h2>
 
-                <p className="text-gray-700 text-base">{book.book_overview}</p>
+                <p className="text-gray-700 text-base line-clamp-2">
+                  {book.book_overview}
+                </p>
 
                 <div className="my-2 space-y-2 text-base">
                   <p className="text-[#242253]">
@@ -34,7 +36,7 @@ const PopularBooks = ({ popularBooks }) => {
                 </div>
 
                 <div className="card-actions mt-4 justify-between items-center">
-                  <div className="badge badge-outline capitalize font-medium pb-[2px]">
+                  <div className="badge badge-outline capitalize font-medium">
                     Total Upvote: {book.upvote?.length || 0}
                   </div>
                   <Link
