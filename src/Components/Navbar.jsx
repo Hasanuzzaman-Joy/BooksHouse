@@ -32,6 +32,7 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/"
+          onClick={() => setMenuOpen(false)}
           className={({ isActive }) =>
             `px-4 py-2 text-base font-semibold rounded-md ${
               isActive
@@ -46,6 +47,7 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/bookshelf"
+          onClick={() => setMenuOpen(false)}
           className={({ isActive }) =>
             `px-4 py-2 text-base font-semibold rounded-md ${
               isActive
@@ -60,6 +62,7 @@ const Navbar = () => {
       <li>
         <NavLink
           to="/contact"
+          onClick={() => setMenuOpen(false)}
           className={({ isActive }) =>
             `px-4 py-2 text-base font-semibold rounded-md ${
               isActive
@@ -75,6 +78,7 @@ const Navbar = () => {
         <li>
           <NavLink
             to="/dashboard/my-books"
+            onClick={() => setMenuOpen(false)}
             className={({ isActive }) =>
               `px-4 py-2 text-base font-semibold rounded-md ${
                 isActive
@@ -168,10 +172,22 @@ const Navbar = () => {
             animate={{ x: 0 }}
             exit={{ x: "-100%" }}
             transition={{ duration: 0.4, ease: "easeInOut" }}
-            className="fixed top-0 left-0 w-3/4 sm:w-2/4 h-full bg-white shadow-lg p-6 z-40"
+            className="fixed top-0 left-0 w-3/4 sm:w-2/4 h-full bg-[#f9f9ff] shadow-lg p-6 z-40"
           >
+            {/* Logo inside sidebar */}
+            <Link
+              to="/"
+              onClick={() => setMenuOpen(false)}
+              className="flex items-center gap-2 mb-6"
+            >
+              <img src="/logo.png" alt="logo" className="w-8" />
+              <h1 className="text-[#242253] font-bold text-lg">
+                Books<span className="text-[#faf34a]">House</span>
+              </h1>
+            </Link>
+
             {/* Links */}
-            <ul className="flex flex-col gap-6">{link}</ul>
+            <ul className="flex flex-col gap-6 mt-10">{link}</ul>
 
             {/* Auth Buttons */}
             <div className="mt-6 flex flex-col gap-3">

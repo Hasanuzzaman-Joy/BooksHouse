@@ -1,5 +1,5 @@
 import { motion } from "motion/react";
-import ZoomInSection from "../Components/ZoomInSection";
+import ZoomInSection from "../ZoomInSection";
 
 const About = () => {
   const textStyle = "font-normal text-base text-gray-800 leading-8";

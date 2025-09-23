@@ -1,6 +1,6 @@
 import { use } from "react";
 import { Link } from "react-router";
-import ZoomInSection from "./ZoomInSection";
+import ZoomInSection from "../ZoomInSection";
 
 export default function FeaturedCategories({ categoriesData }) {
   const categories = use(categoriesData);

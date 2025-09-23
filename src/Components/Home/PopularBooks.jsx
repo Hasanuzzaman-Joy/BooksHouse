@@ -1,5 +1,5 @@
 import { Link } from "react-router";
-import ZoomInSection from "./ZoomInSection";
+import ZoomInSection from "../ZoomInSection";
 
 const PopularBooks = ({ popularBooks }) => {
   return (

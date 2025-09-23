@@ -1,9 +1,8 @@
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Pagination, Autoplay } from "swiper/modules"; // removed Navigation
+import { Pagination, Autoplay } from "swiper/modules";
 import "swiper/css";
 import "swiper/css/pagination";
-
-import ZoomInSection from "../Components/ZoomInSection";
+import ZoomInSection from "../ZoomInSection";
 import StarRatings from "react-star-ratings";
 import { use } from "react";
 

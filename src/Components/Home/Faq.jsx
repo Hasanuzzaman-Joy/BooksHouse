@@ -1,5 +1,5 @@
 import { use } from "react";
-import ZoomInSection from "./ZoomInSection";
+import ZoomInSection from "../ZoomInSection";
 
 const Faq = ({ faqData }) => {
   const faqs = use(faqData);

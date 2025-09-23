@@ -1,14 +1,14 @@
 import { Suspense, useEffect, useState } from "react";
-import Faq from "../../Components/Faq";
-import Slider from "../../Components/Slider";
-import Testimonial from "../../Components/Testimonial";
+import Faq from "../../Components//Home/Faq";
+import Slider from "../../Components/Home/Slider";
+import Testimonial from "../../Components/Home/Testimonial";
 import Loading from "../../Components/Loading";
-import CallToAction from "../../Components/CallToAction";
-import PopularBooks from "../../Components/PopularBooks";
-import FeaturedCategories from "../../Components/FeaturedCategories";
-import About from "../../Components/About";
+import CallToAction from "../../Components/Home/CallToAction";
+import PopularBooks from "../../Components/Home/PopularBooks";
+import FeaturedCategories from "../../Components/Home/FeaturedCategories";
+import About from "../../Components/Home/About";
 import ZoomInSection from "../../Components/ZoomInSection";
-import SectionHeader from "../../Components/SectionHeader";
+import SectionHeader from "../../Components/Home/SectionHeader";
 
 // Static Data
 const testimonialData = fetch("/testimonial.json").then((res) => res.json());
