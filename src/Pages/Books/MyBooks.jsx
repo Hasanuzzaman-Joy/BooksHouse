@@ -30,9 +30,7 @@ const MyBooks = () => {
       })
       .catch((err) => {
         if (err?.status === 401 || err?.status === 403) {
-          logOut().then(() => {
-            console.log("Signed Out");
-          });
+          logOut();
         }
       });
   }, [user, logOut]);
@@ -71,9 +69,7 @@ const MyBooks = () => {
           })
           .catch((err) => {
             if (err?.status === 401 || err?.status === 403) {
-              logOut().then(() => {
-                console.log("Signed Out");
-              });
+              logOut();
             }
           });
       }

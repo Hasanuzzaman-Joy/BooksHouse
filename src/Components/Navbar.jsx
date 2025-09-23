@@ -1,16 +1,30 @@
 import { NavLink, Link, useNavigate } from "react-router";
+import { motion, AnimatePresence } from "motion/react";
 import useAuth from "../Hooks/useAuth";
+import { FaUserCircle } from "react-icons/fa";
+import { FiX, FiMenu } from "react-icons/fi";
+import { useEffect, useState } from "react";
 
 const Navbar = () => {
   const { user, logOut } = useAuth();
   const navigate = useNavigate();
+  const [isScrolled, setIsScrolled] = useState(false);
+  const [menuOpen, setMenuOpen] = useState(false);
 
   // Handle Log Out
   const logOutForm = () => {
     logOut().then(() => {
       navigate("/login");
+      setMenuOpen(false);
     });
   };
+
+  // Scroll shrink effect
+  useEffect(() => {
+    const handleScroll = () => setIsScrolled(window.scrollY > 10);
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   // Navbar Links
   const link = (
@@ -57,7 +71,6 @@ const Navbar = () => {
           Contact
         </NavLink>
       </li>
-
       {user && (
         <li>
           <NavLink
@@ -74,141 +87,139 @@ const Navbar = () => {
           </NavLink>
         </li>
       )}
-
-      {!user && (
-        <>
-          <li>
-            <NavLink
-              to="/login"
-              className={({ isActive }) =>
-                `px-4 py-2 text-base font-semibold rounded-md md:hidden ${
-                  isActive
-                    ? "bg-[#bfbdff] text-[#242253]"
-                    : "hover:bg-[#bfbdff] hover:text-[#242253]"
-                }`
-              }
-            >
-              Login
-            </NavLink>
-          </li>
-          <li>
-            <NavLink
-              to="/register"
-              className={({ isActive }) =>
-                `px-4 py-2 text-base font-semibold rounded-md md:hidden ${
-                  isActive
-                    ? "bg-[#bfbdff] text-[#242253]"
-                    : "hover:bg-[#bfbdff] hover:text-[#242253]"
-                }`
-              }
-            >
-              Register
-            </NavLink>
-          </li>
-        </>
-      )}
     </>
   );
 
   return (
-    <div className="fixed top-0 left-0 right-0 z-50">
-      <div className="w-full bg-white border-b-[0.5px] border-[#dbdbdb]">
-        <div className="navbar w-full md:max-w-screen-xl mx-auto px-4">
-          <div className="navbar-start">
-            {/* Mobile Dropdown */}
-            <div className="dropdown">
-              <div
-                tabIndex={0}
-                role="button"
-                className="btn btn-ghost lg:hidden -ml-3"
-              >
-                <svg
-                  xmlns="http://www.w3.org/2000/svg"
-                  className="h-5 w-5"
-                  fill="none"
-                  viewBox="0 0 24 24"
-                  stroke="currentColor"
-                >
-                  <path
-                    strokeLinecap="round"
-                    strokeLinejoin="round"
-                    strokeWidth="2"
-                    d="M4 6h16M4 12h8m-8 6h16"
-                  />
-                </svg>
-              </div>
-              <ul
-                tabIndex={0}
-                className="menu bg-[#bfbdff] dark:text-black font-bold menu-sm dropdown-content rounded-box z-1 mt-3 w-52 p-2 shadow"
-              >
-                {link}
-              </ul>
-            </div>
+    <header
+      className={`fixed top-0 left-0 right-0 z-50 bg-white border-b-[0.5px] border-[#dbdbdb] transition-all duration-500 ${
+        isScrolled ? "py-2" : "py-5"
+      }`}
+    >
+      <div className="max-w-screen-xl mx-auto px-4 flex justify-between items-center">
+        {/* Logo */}
+        <Link to="/" className="flex items-center gap-2">
+          <img src="/logo.png" alt="logo" className="w-8" />
+          <h1 className="text-[#242253] font-bold text-base md:text-2xl">
+            Books<span className="text-[#faf34a]">House</span>
+          </h1>
+        </Link>
 
-            {/* Logo */}
-            <div className="flex justify-center items-center -ml-2 md:ml-0">
-              <img src="/logo.png" className="w-8" alt="logo" />
-              <h1 className="text-[#242253] font-bold text-base md:text-2xl -ml-[2px]">
-                Books<span className="text-[#faf34a]">House</span>
-              </h1>
-            </div>
-          </div>
+        {/* Desktop Links */}
+        <ul className="hidden lg:flex items-center gap-6">{link}</ul>
 
-          {/* Desktop Links */}
-          <div className="navbar-center hidden lg:flex">
-            <ul className="menu menu-horizontal px-1">{link}</ul>
-          </div>
-
-          {/* User Avatar and auth buttons */}
+        {/* Desktop Auth Buttons */}
+        <div className="hidden lg:flex items-center gap-4">
           {user ? (
-            <div className="navbar-end flex gap-4">
-              <div className="dropdown dropdown-left dropdown-bottom">
-                <div tabIndex={0}>
-                  <div className="avatar avatar-online cursor-pointer">
-                    <div className="w-10 rounded-full dark:border-[1px] dark:border-white">
-                      <img src={user.photoURL} alt="User" />
-                    </div>
-                  </div>
-                </div>
-                <ul
-                  tabIndex={0}
-                  className="menu dropdown-content rounded-box z-10 w-[220px] p-2 shadow-lg bg-[#d7e1db] dark:text-black"
-                >
-                  <li className="border-b-[1px] border-[#a7a7a7]">
-                    <h1 className="bg-transparent active:bg-transparent focus:bg-transparent font-bold">
-                      {user.displayName}
-                    </h1>
-                  </li>
-                  <li>
-                    <button
-                      onClick={logOutForm}
-                      className="bg-transparent active:bg-transparent focus:bg-transparent font-bold"
-                    >
-                      Log Out
-                    </button>
-                  </li>
-                </ul>
-              </div>
-            </div>
+            <>
+              {user.photoURL ? (
+                <img
+                  src={user.photoURL}
+                  alt="User"
+                  title={user.displayName || "User"}
+                  className="w-10 h-10 rounded-full border-2 border-[#bfbdff]"
+                />
+              ) : (
+                <FaUserCircle className="text-2xl text-textSecondary" />
+              )}
+              <button
+                onClick={logOutForm}
+                className="px-4 py-2 font-semibold rounded-md bg-[#bfbdff] hover:bg-[#242253] text-[#242253] hover:text-white transition-all duration-300 cursor-pointer"
+              >
+                Logout
+              </button>
+            </>
           ) : (
-            <div className="navbar-end flex gap-1 md:gap-4">
+            <>
               <Link
                 to="/login"
-                className="btn bg-[#bfbdff] hover:bg-[#242253] text-[12px] md:text-sm text-[#242253] hover:text-white md:px-8 hidden md:flex"
+                className="px-4 py-2 font-semibold rounded-md bg-[#bfbdff] hover:bg-[#242253] text-[#242253] hover:text-white transition-all duration-300"
               >
                 Login
               </Link>
               <Link
                 to="/register"
-                className="btn bg-[#242253] hover:bg-[#bfbdff] text-[12px] md:text-sm text-white hover:text-[#242253] md:px-8 hidden md:flex"
+                className="px-4 py-2 font-semibold rounded-md bg-[#242253] hover:bg-[#bfbdff] text-white hover:text-[#242253] transition-all duration-300"
               >
                 Register
               </Link>
-            </div>
+            </>
           )}
         </div>
+
+        {/* Hamburger Icon */}
+        <div className="lg:hidden">
+          <button onClick={() => setMenuOpen(!menuOpen)}>
+            {menuOpen ? (
+              <FiX className="text-2xl text-main cursor-pointer" />
+            ) : (
+              <FiMenu className="text-2xl text-main cursor-pointer" />
+            )}
+          </button>
+        </div>
       </div>
-    </div>
+
+      {/* Mobile Menu */}
+      <AnimatePresence>
+        {menuOpen && (
+          <motion.div
+            key="mobileMenu"
+            initial={{ x: "-100%" }}
+            animate={{ x: 0 }}
+            exit={{ x: "-100%" }}
+            transition={{ duration: 0.4, ease: "easeInOut" }}
+            className="fixed top-0 left-0 w-3/4 sm:w-2/4 h-full bg-white shadow-lg p-6 z-40"
+          >
+            {/* Links */}
+            <ul className="flex flex-col gap-6">{link}</ul>
+
+            {/* Auth Buttons */}
+            <div className="mt-6 flex flex-col gap-3">
+              {user ? (
+                <>
+                  <div className="flex items-center gap-2 mb-2">
+                    {user.photoURL ? (
+                      <img
+                        src={user.photoURL}
+                        alt="User"
+                        title={user.displayName || "User"}
+                        className="w-10 h-10 rounded-full border-2 border-[#bfbdff]"
+                      />
+                    ) : (
+                      <FaUserCircle className="text-2xl text-textSecondary" />
+                    )}
+                    <span>{user.displayName}</span>
+                  </div>
+                  <button
+                    onClick={logOutForm}
+                    className="px-4 py-2 font-semibold rounded-md bg-[#bfbdff] hover:bg-[#242253] text-[#242253] hover:text-white"
+                  >
+                    Logout
+                  </button>
+                </>
+              ) : (
+                <>
+                  <Link
+                    to="/login"
+                    onClick={() => setMenuOpen(false)}
+                    className="px-4 py-2 font-semibold rounded-md bg-[#bfbdff] hover:bg-[#242253] text-[#242253] hover:text-white"
+                  >
+                    Login
+                  </Link>
+                  <Link
+                    to="/register"
+                    onClick={() => setMenuOpen(false)}
+                    className="px-4 py-2 font-semibold rounded-md bg-[#242253] hover:bg-[#bfbdff] text-white hover:text-[#242253]"
+                  >
+                    Register
+                  </Link>
+                </>
+              )}
+            </div>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </header>
   );
 };
 

@@ -41,7 +41,7 @@ const AddBook = () => {
           });
 
           setTimeout(() => {
-            navigate("/my-books");
+            navigate("/dashboard/my-books");
           }, 2200);
         }
       })
@@ -50,9 +50,7 @@ const AddBook = () => {
           if (err?.status === 401 || err?.status === 403) {
             toast.error("You can only add books using your own account.");
             setTimeout(() => {
-              logOut().then(() => {
-                console.log("Signed Out");
-              });
+              logOut()
             }, 2500);
           }
         }
@@ -66,10 +64,10 @@ const AddBook = () => {
         <h2 className="mb-3 text-2xl md:text-4xl font-bold text-center text-[#242253]">
           Add a New Book to Your Library
         </h2>
-        <div className="flex items-center w-full my-4 gap-3">
-          <hr className="w-full" />
+        <div className="flex items-center w-full text-[#242253] my-4 gap-3">
+          <hr className="w-full text-gray-400" />
           <IoBookSharp size={50} />
-          <hr className="w-full" />
+          <hr className="w-full text-gray-400" />
         </div>
 
         {/* Book Form */}

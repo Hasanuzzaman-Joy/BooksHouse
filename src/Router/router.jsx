@@ -44,7 +44,11 @@ const router = createBrowserRouter([
         path: "book-details/:id",
         loader: ({ params }) =>
           fetch(`${import.meta.env.VITE_SERVER_URL}/book/${params.id}`),
-        element: <BookDetails />,
+        element: (
+          <PrivateRoute>
+            <BookDetails />
+          </PrivateRoute>
+        ),
         hydrateFallbackElement: <Loading />,
         errorElement: <Error />,
       },

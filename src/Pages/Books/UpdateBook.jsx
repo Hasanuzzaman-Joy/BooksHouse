@@ -30,7 +30,7 @@ const UpdateBook = () => {
         })
         .catch((err) => {
           if (err?.status === 401 || err?.status === 403) {
-            logOut().then(() => console.log("Signed Out"));
+            logOut();
           }
         });
     }
@@ -59,16 +59,13 @@ const UpdateBook = () => {
             showConfirmButton: false,
             timer: 1500,
           });
-          setTimeout(() => navigate("/my-books"), 1300);
+          setTimeout(() => navigate("/dashboard/my-books"), 1300);
         }
       })
       .catch((err) => {
         if (err?.status === 401 || err?.status === 403) {
           toast.error("You can only update books using your own account.");
-          setTimeout(
-            () => logOut().then(() => console.log("Signed Out")),
-            2500
-          );
+          setTimeout(() => logOut(), 2500);
         }
       });
   };
@@ -82,10 +79,10 @@ const UpdateBook = () => {
         <h2 className="mb-3 text-2xl md:text-4xl font-bold text-center text-[#242253]">
           Update This Book in Your Library
         </h2>
-        <div className="flex items-center w-full my-4 gap-3">
-          <hr className="w-full" />
+        <div className="flex items-center w-full text-[#242253] my-4 gap-3">
+          <hr className="w-full text-gray-400" />
           <IoBookSharp size={50} />
-          <hr className="w-full" />
+          <hr className="w-full text-gray-400" />
         </div>
 
         {/* Book Form */}
