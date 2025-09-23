@@ -7,12 +7,14 @@ import useUploadImage from "../../Hooks/useUploadImage";
 import { FiLogIn } from "react-icons/fi";
 
 const Register = () => {
+  // Page Title
   useEffect(() => {
     document.title = "BooksHouse | Register";
   }, []);
 
   const navigate = useNavigate();
-  const { register, updatedProfile, googleSign, setLoading, loading } = useAuth();
+  const { register, updatedProfile, googleSign, setLoading, loading } =
+    useAuth();
   const { imgURL, imgLoading, handleImageUpload } = useUploadImage();
 
   // Google Sign In
@@ -114,7 +116,9 @@ const Register = () => {
           {/* Left: Form Section */}
           <div className="flex flex-1 justify-center items-center bg-base-100 p-8">
             <div className="w-full md:max-w-md">
-              <h2 className="mb-3 text-2xl md:text-4xl font-bold">Register Account</h2>
+              <h2 className="mb-3 text-2xl md:text-4xl font-bold">
+                Register Account
+              </h2>
               <p className="mb-6 text-gray-500 leading-7">
                 Create your BooksHouse profile and start reading.
               </p>

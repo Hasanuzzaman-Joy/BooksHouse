@@ -9,9 +9,7 @@ const SectionHeader = ({ title, subtitle }) => {
       </h1>
 
       {/* Subtitle */}
-      {subtitle && (
-        <p className="text-gray-500 text-base mt-2">{subtitle}</p>
-      )}
+      {subtitle && <p className="text-gray-500 text-base mt-2">{subtitle}</p>}
 
       {/* Divider */}
       <div className="flex justify-center mt-4 mb-5">

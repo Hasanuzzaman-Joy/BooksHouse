@@ -115,7 +115,10 @@ const DashboardLayouts = () => {
 
         {/* Mobile Top Navbar */}
         <div className="xl:hidden fixed top-0 left-0 right-0 bg-[#242253] text-white flex justify-between items-center p-4 z-50">
-          <button className="text-2xl" onClick={() => setIsOpen(!isOpen)}>
+          <button
+            className="text-2xl cursor-pointer"
+            onClick={() => setIsOpen(!isOpen)}
+          >
             {isOpen ? <FaTimes /> : <FaBars />}
           </button>
           <Link to="/">

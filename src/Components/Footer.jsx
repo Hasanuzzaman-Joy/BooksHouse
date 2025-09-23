@@ -25,7 +25,7 @@ const Footer = () => {
   return (
     <>
       {/* Main Footer */}
-      <div className="footer grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-base-content w-full md:max-w-screen-xl mx-auto px-4 py-10 md:py-14">
+      <div className="footer w-full md:max-w-screen-xl mx-auto grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 text-base-content px-4 py-10 md:py-14">
         {/* Logo Section */}
         <aside className="flex flex-row justify-center items-center">
           <img src="/logo.png" alt="" className="w-14" />
@@ -38,7 +38,11 @@ const Footer = () => {
         <nav className="md:ml-2 lg:ml-5">
           <h6 className="footer-title font-bold text-lg">Menu</h6>
           {menuLinks.map((link) => (
-            <Link key={link.name} to={link.to} className="link link-hover text-base text-gray-800 font-medium">
+            <Link
+              key={link.name}
+              to={link.to}
+              className="link link-hover text-base text-gray-800 font-medium"
+            >
               {link.name}
             </Link>
           ))}
@@ -48,7 +52,11 @@ const Footer = () => {
         <nav className="md:ml-2 lg:ml-2">
           <h6 className="footer-title font-bold text-lg">Legal</h6>
           {legalLinks.map((link) => (
-            <Link key={link.name} to={link.to} className="link link-hover text-base text-gray-800 font-medium">
+            <Link
+              key={link.name}
+              to={link.to}
+              className="link link-hover text-base text-gray-800 font-medium"
+            >
               {link.name}
             </Link>
           ))}

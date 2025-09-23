@@ -21,6 +21,7 @@ const router = createBrowserRouter([
   {
     path: "/",
     Component: MainLayout,
+    errorElement: <Error />,
     children: [
       {
         index: true,
@@ -68,15 +69,12 @@ const router = createBrowserRouter([
         path: "/forget-password",
         Component: ForgotPassword,
       },
-      {
-        path: "*",
-        Component: Error,
-      },
     ],
   },
   {
     path: "/dashboard",
     Component: DashboardLayouts,
+    errorElement: <Error />,
     children: [
       {
         path: "my-books",
@@ -110,10 +108,6 @@ const router = createBrowserRouter([
             <Profile />
           </PrivateRoute>
         ),
-      },
-      {
-        path: "*",
-        Component: Error,
       },
     ],
   },
